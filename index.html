@@ -174,6 +174,99 @@
     </div>
   </section>
 
+  <!-- ── BPO BESPARINGSCALCULATOR ──────────────────────────── -->
+  <section class="section" aria-labelledby="calc-heading">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <h2 id="calc-heading" data-nl="Bereken uw BPO-besparing" data-en="Calculate your BPO savings">Bereken uw BPO-besparing</h2>
+        <span class="orange-rule" style="margin-inline:auto"></span>
+        <p class="text-lead" style="max-width:560px;margin:0 auto" data-nl="Stel uw teamgrootte en diensttype in en zie direct wat u bespaart met Corpshore." data-en="Set your team size and service type and see immediately what you save with Corpshore.">Stel uw teamgrootte en diensttype in en zie direct wat u bespaart met Corpshore.</p>
+      </div>
+      <div class="calc-widget">
+        <div class="calc-body">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label class="calc-label" for="calc-fte">
+                <span data-nl="Teamgrootte" data-en="Team size">Teamgrootte</span>
+                <span class="calc-val" id="calc-fte-val">20 FTE</span>
+              </label>
+              <input type="range" id="calc-fte" class="calc-slider" min="5" max="200" value="20" oninput="calcUpdate()">
+              <div class="calc-range-labels"><span>5</span><span>200</span></div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label" for="calc-langs">
+                <span data-nl="Aantal talen" data-en="Number of languages">Aantal talen</span>
+                <span class="calc-val" id="calc-langs-val">3</span>
+              </label>
+              <input type="range" id="calc-langs" class="calc-slider" min="1" max="15" value="3" oninput="calcUpdate()">
+              <div class="calc-range-labels"><span>1</span><span>15</span></div>
+            </div>
+            <div class="calc-field">
+              <label class="calc-label" for="calc-type" data-nl="Diensttype" data-en="Service type">Diensttype</label>
+              <select id="calc-type" onchange="calcUpdate()" style="margin-top:8px;padding:10px 14px;border:1.5px solid var(--grey-border);border-radius:10px;font-family:var(--font-ui);font-size:14px;color:var(--navy);background:var(--white);cursor:pointer;width:100%">
+                <option value="cs" data-nl="Klantenservice (BPO)" data-en="Customer Service (BPO)">Klantenservice (BPO)</option>
+                <option value="it" data-nl="IT-outsourcing" data-en="IT Outsourcing">IT-outsourcing</option>
+                <option value="bo" data-nl="Back-office verwerking" data-en="Back-office processing">Back-office verwerking</option>
+                <option value="ai" data-nl="AI / Data-annotatie" data-en="AI / Data annotation">AI / Data-annotatie</option>
+                <option value="hr" data-nl="HR Outsourcing" data-en="HR Outsourcing">HR Outsourcing</option>
+              </select>
+            </div>
+          </div>
+          <div class="calc-results">
+            <div class="calc-result-card">
+              <div>
+                <div class="calc-result-eyebrow" data-nl="Interne kosten (schatting)" data-en="In-house cost (estimate)">Interne kosten</div>
+                <div class="calc-result-sub" data-nl="per jaar incl. HR &amp; overhead" data-en="per year incl. HR &amp; overhead">per jaar incl. HR &amp; overhead</div>
+              </div>
+              <div class="calc-result-amount" id="calc-inhouse">&#8364;&nbsp;1.040.000</div>
+            </div>
+            <div class="calc-result-vs">VS.</div>
+            <div class="calc-result-card calc-result-card--corps">
+              <div>
+                <div class="calc-result-eyebrow" data-nl="Met Corpshore" data-en="With Corpshore">Met Corpshore</div>
+                <div class="calc-result-sub calc-result-sub--light" data-nl="all-in beheerd &amp; schaalbaar" data-en="fully managed &amp; scalable">all-in beheerd &amp; schaalbaar</div>
+              </div>
+              <div class="calc-result-amount calc-result-amount--white" id="calc-corps">&#8364;&nbsp;436.060</div>
+            </div>
+            <div class="calc-result-card calc-result-card--save">
+              <div>
+                <div class="calc-result-eyebrow" style="color:#2a6b35" data-nl="Geschatte besparing" data-en="Estimated saving">Geschatte besparing</div>
+                <div class="calc-result-sub" style="color:#2a6b35" data-nl="op jaarbasis" data-en="per year">op jaarbasis</div>
+              </div>
+              <div class="calc-result-amount calc-result-amount--green" id="calc-save">58%</div>
+            </div>
+          </div>
+        </div>
+        <p class="calc-disclaimer" data-nl="Indicatieve schatting op basis van gemiddelde marktprijzen. Werkelijke besparingen kunnen hoger uitvallen." data-en="Indicative estimate based on average market prices. Actual savings may be higher.">Indicatieve schatting op basis van gemiddelde marktprijzen. Werkelijke besparingen kunnen hoger uitvallen.</p>
+        <div class="calc-cta">
+          <a href="/contact/" class="btn btn--primary btn--lg" data-nl="Offerte aanvragen" data-en="Request a quote">Offerte aanvragen</a>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var rates={cs:{i:52000,c:18500},it:{i:75000,c:28000},bo:{i:47000,c:14500},ai:{i:58000,c:21000},hr:{i:60000,c:23500}};
+      function fmt(n){return'€ '+Math.round(n).toLocaleString('nl-NL');}
+      window.calcUpdate=function(){
+        var fte=+document.getElementById('calc-fte').value;
+        var langs=+document.getElementById('calc-langs').value;
+        var type=document.getElementById('calc-type').value;
+        document.getElementById('calc-fte-val').textContent=fte+' FTE';
+        document.getElementById('calc-langs-val').textContent=langs;
+        var r=rates[type];
+        var lm=1+(langs-1)*0.04;
+        var inhouse=fte*r.i*lm;
+        var corps=fte*r.c*lm*1.18;
+        var pct=Math.round((1-corps/inhouse)*100);
+        document.getElementById('calc-inhouse').textContent=fmt(inhouse);
+        document.getElementById('calc-corps').textContent=fmt(corps);
+        document.getElementById('calc-save').textContent=pct+'%';
+      };
+      window.calcUpdate();
+    })();
+    </script>
+  </section>
+
   <!-- ── SECTORS ────────────────────────────────────────────── -->
   <section class="section" aria-labelledby="sec-heading">
     <div class="container">
@@ -255,6 +348,114 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ── OUTSOURCING GEREEDHEIDSCHECK ─────────────────────────── -->
+  <section class="section section--grey" aria-labelledby="quiz-heading">
+    <div class="container" style="max-width:720px">
+      <div class="section-header section-header--center">
+        <h2 id="quiz-heading" data-nl="Bent u klaar voor outsourcing?" data-en="Are you ready to outsource?">Bent u klaar voor outsourcing?</h2>
+        <span class="orange-rule" style="margin-inline:auto"></span>
+        <p class="text-lead" style="max-width:540px;margin:0 auto" data-nl="Beantwoord 4 vragen en ontdek welk uitbestedingsmodel bij uw organisatie past." data-en="Answer 4 questions and discover which outsourcing model fits your organisation.">Beantwoord 4 vragen en ontdek welk uitbestedingsmodel bij uw organisatie past.</p>
+      </div>
+      <div class="quiz-widget">
+        <div class="quiz-card" id="quiz-card">
+          <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-prog" style="width:0%"></div></div>
+          <div id="qs-0">
+            <p class="quiz-question" data-nl="Hoeveel medewerkers telt uw organisatie?" data-en="How many employees does your organisation have?">Hoeveel medewerkers telt uw organisatie?</p>
+            <div class="quiz-opts">
+              <button class="quiz-opt" onclick="quizAnswer(0,1)">Minder dan 25</button>
+              <button class="quiz-opt" onclick="quizAnswer(0,2)">25 – 100</button>
+              <button class="quiz-opt" onclick="quizAnswer(0,3)">100 – 500</button>
+              <button class="quiz-opt" onclick="quizAnswer(0,4)">Meer dan 500</button>
+            </div>
+          </div>
+          <div id="qs-1" style="display:none">
+            <p class="quiz-question" data-nl="Hoe verloopt uw klantcontact momenteel?" data-en="How is your customer contact currently handled?">Hoe verloopt uw klantcontact momenteel?</p>
+            <div class="quiz-opts">
+              <button class="quiz-opt" onclick="quizAnswer(1,1)">Volledig intern</button>
+              <button class="quiz-opt" onclick="quizAnswer(1,2)">Deels uitbesteed</button>
+              <button class="quiz-opt" onclick="quizAnswer(1,3)">Grotendeels uitbesteed</button>
+              <button class="quiz-opt" onclick="quizAnswer(1,4)">Wij hebben geen klantcontact</button>
+            </div>
+          </div>
+          <div id="qs-2" style="display:none">
+            <p class="quiz-question" data-nl="In hoeveel talen bedient u uw klanten?" data-en="In how many languages do you serve your clients?">In hoeveel talen bedient u uw klanten?</p>
+            <div class="quiz-opts">
+              <button class="quiz-opt" onclick="quizAnswer(2,1)">Alleen Nederlands</button>
+              <button class="quiz-opt" onclick="quizAnswer(2,2)">NL + 1 taal</button>
+              <button class="quiz-opt" onclick="quizAnswer(2,3)">3 – 6 talen</button>
+              <button class="quiz-opt" onclick="quizAnswer(2,4)">7 of meer talen</button>
+            </div>
+          </div>
+          <div id="qs-3" style="display:none">
+            <p class="quiz-question" data-nl="Wat is uw belangrijkste doel bij outsourcing?" data-en="What is your primary goal for outsourcing?">Wat is uw belangrijkste doel bij outsourcing?</p>
+            <div class="quiz-opts">
+              <button class="quiz-opt" onclick="quizAnswer(3,1)">Kosten verlagen</button>
+              <button class="quiz-opt" onclick="quizAnswer(3,2)">Snel opschalen</button>
+              <button class="quiz-opt" onclick="quizAnswer(3,3)">Meertalige dekking</button>
+              <button class="quiz-opt" onclick="quizAnswer(3,4)">Focus op kernactiviteit</button>
+            </div>
+          </div>
+          <div id="quiz-result" style="display:none;text-align:center;padding-top:8px">
+            <div style="font-size:44px;margin-bottom:14px" id="quiz-badge">&#127881;</div>
+            <h3 style="font-family:var(--font-serif);color:var(--navy);font-size:22px;margin-bottom:10px" id="quiz-result-title"></h3>
+            <p style="font-size:15px;color:#3a3a4a;line-height:1.65;max-width:500px;margin:0 auto 24px" id="quiz-result-body"></p>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+              <a href="/contact/" class="btn btn--primary" data-nl="Gesprek plannen" data-en="Book a call">Gesprek plannen</a>
+              <button class="btn btn--secondary" onclick="quizReset()" data-nl="Opnieuw doen" data-en="Start over">Opnieuw doen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var scores=[0,0,0,0];
+      var step=0;
+      var results=[
+        {badge:'&#127807;',title:'BPO Starter',body:'Uw organisatie staat aan het begin van de outsourcingmogelijkheden. Een klein pilotproject is de ideale eerste stap om vertrouwen te bouwen en de voordelen concreet te maken.'},
+        {badge:'&#128200;',title:'BPO Growth',body:'Uw organisatie is klaar voor structureel uitbesteden. Een managed BPO-model met Corpshore geeft u schaalbaarheid zonder capaciteitsrisico.'},
+        {badge:'&#127758;',title:'BPO Enterprise',body:'U heeft de complexiteit en schaal die een volwassen outsourcingpartner vraagt. Corpshore levert een fully managed model met dedicated teams, SLA-garanties en wekelijkse rapportage.'}
+      ];
+      window.quizAnswer=function(q,val){
+        scores[q]=val;
+        var cur=document.getElementById('qs-'+q);
+        cur.style.transition='opacity .22s ease,transform .22s ease';
+        cur.style.opacity='0';
+        cur.style.transform='translateX(-20px)';
+        setTimeout(function(){
+          cur.style.display='none';
+          step=q+1;
+          document.getElementById('quiz-prog').style.width=(step/4*100)+'%';
+          if(step<4){
+            var nxt=document.getElementById('qs-'+step);
+            nxt.style.cssText='display:block;opacity:0;transform:translateX(20px);transition:opacity .22s ease,transform .22s ease';
+            requestAnimationFrame(function(){nxt.style.opacity='1';nxt.style.transform='none';});
+          } else {
+            var total=scores.reduce(function(a,b){return a+b;},0);
+            var tier=total<=8?0:total<=13?1:2;
+            var r=results[tier];
+            document.getElementById('quiz-badge').innerHTML=r.badge;
+            document.getElementById('quiz-result-title').textContent=r.title;
+            document.getElementById('quiz-result-body').textContent=r.body;
+            var res=document.getElementById('quiz-result');
+            res.style.cssText='display:block;opacity:0;transition:opacity .3s ease;text-align:center;padding-top:8px';
+            requestAnimationFrame(function(){res.style.opacity='1';});
+          }
+        },220);
+      };
+      window.quizReset=function(){
+        scores=[0,0,0,0];step=0;
+        for(var i=0;i<4;i++){
+          var s=document.getElementById('qs-'+i);
+          s.style.cssText=i===0?'display:block':'display:none';
+        }
+        document.getElementById('quiz-result').style.display='none';
+        document.getElementById('quiz-prog').style.width='0%';
+      };
+    })();
+    </script>
   </section>
 
   <!-- ── CTA BANNER ─────────────────────────────────────────── -->

@@ -38,6 +38,97 @@
     </div>
   </div>
 
+  <!-- INSTANT OFFERTECHECK -->
+  <section class="section section--grey" aria-labelledby="iq-heading" style="border-bottom:1px solid var(--grey-border)">
+    <div class="container" style="max-width:720px">
+      <div class="section-header section-header--center">
+        <h2 id="iq-heading">Instant Offertecheck</h2>
+        <span class="orange-rule" style="margin-inline:auto"></span>
+        <p class="text-lead" style="max-width:480px;margin:0 auto">Beantwoord 3 korte vragen en ontvang direct een indicatief budget en doorlooptijd.</p>
+      </div>
+      <div class="iq-widget" style="margin-inline:auto">
+        <div class="iq-steps">
+          <div class="iq-step-dot active" id="iqd-0"></div>
+          <div class="iq-step-dot" id="iqd-1"></div>
+          <div class="iq-step-dot" id="iqd-2"></div>
+        </div>
+        <div id="iq-step-0">
+          <p class="iq-question">Welke dienst heeft u nodig?</p>
+          <div class="iq-options">
+            <button class="iq-option" onclick="iqNext(0,'BPO / Klantcontact')">BPO / Klantcontact</button>
+            <button class="iq-option" onclick="iqNext(0,'IT-outsourcing')">IT-outsourcing</button>
+            <button class="iq-option" onclick="iqNext(0,'AI / Data-annotatie')">AI / Data-annotatie</button>
+            <button class="iq-option" onclick="iqNext(0,'Finance &amp; HR')">Finance &amp; HR</button>
+          </div>
+        </div>
+        <div id="iq-step-1" style="display:none">
+          <p class="iq-question">Hoeveel seats heeft u nodig?</p>
+          <div class="iq-options">
+            <button class="iq-option" onclick="iqNext(1,'1–5 seats')">1 – 5 seats</button>
+            <button class="iq-option" onclick="iqNext(1,'6–20 seats')">6 – 20 seats</button>
+            <button class="iq-option" onclick="iqNext(1,'21–100 seats')">21 – 100 seats</button>
+            <button class="iq-option" onclick="iqNext(1,'100+ seats')">100+ seats</button>
+          </div>
+        </div>
+        <div id="iq-step-2" style="display:none">
+          <p class="iq-question">Wanneer wilt u starten?</p>
+          <div class="iq-options">
+            <button class="iq-option" onclick="iqNext(2,'Binnen 4 weken')">Binnen 4 weken</button>
+            <button class="iq-option" onclick="iqNext(2,'1–3 maanden')">1 – 3 maanden</button>
+            <button class="iq-option" onclick="iqNext(2,'3–6 maanden')">3 – 6 maanden</button>
+            <button class="iq-option" onclick="iqNext(2,'Orienterend')">Orienterend</button>
+          </div>
+        </div>
+        <div class="iq-result" id="iq-result" style="display:none;text-align:center">
+          <div style="font-size:40px;margin-bottom:16px">&#128203;</div>
+          <h3 style="font-family:var(--font-serif);color:var(--navy);margin-bottom:12px">Indicatief budget</h3>
+          <p id="iq-result-body" style="font-size:15px;color:#3a3a4a;line-height:1.65;max-width:520px;margin:0 auto 20px"></p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="#cal-heading" class="btn btn--primary" onclick="document.querySelector('[id=cal-heading]').scrollIntoView({behavior:'smooth'});return false">Plan een gesprek</a>
+            <button class="btn btn--secondary" onclick="iqReset()">Opnieuw</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var sel={};
+      var budgets={
+        'BPO / Klantcontact':{'1–5 seats':'&#8364; 8.000 – 18.000/mnd','6–20 seats':'&#8364; 25.000 – 70.000/mnd','21–100 seats':'&#8364; 60.000 – 280.000/mnd','100+ seats':'op aanvraag'},
+        'IT-outsourcing':{'1–5 seats':'&#8364; 12.000 – 30.000/mnd','6–20 seats':'&#8364; 40.000 – 110.000/mnd','21–100 seats':'&#8364; 90.000 – 400.000/mnd','100+ seats':'op aanvraag'},
+        'AI / Data-annotatie':{'1–5 seats':'&#8364; 7.000 – 16.000/mnd','6–20 seats':'&#8364; 22.000 – 60.000/mnd','21–100 seats':'&#8364; 50.000 – 220.000/mnd','100+ seats':'op aanvraag'},
+        'Finance &amp; HR':{'1–5 seats':'&#8364; 6.000 – 14.000/mnd','6–20 seats':'&#8364; 18.000 – 55.000/mnd','21–100 seats':'&#8364; 45.000 – 180.000/mnd','100+ seats':'op aanvraag'}
+      };
+      var timelines={'Binnen 4 weken':'2–3 weken onboarding','1–3 maanden':'4–6 weken onboarding','3–6 maanden':'6–8 weken onboarding','Orienterend':'flexibel op uw planning'};
+      window.iqNext=function(step,val){
+        sel[step]=val;
+        document.getElementById('iq-step-'+step).style.display='none';
+        var nxt=step+1;
+        if(nxt<3){
+          document.getElementById('iq-step-'+nxt).style.display='block';
+          for(var i=0;i<3;i++){
+            var d=document.getElementById('iqd-'+i);
+            d.className='iq-step-dot'+(i<nxt?' done':i===nxt?' active':'');
+          }
+        } else {
+          var b=(budgets[sel[0]]||{})[sel[1]]||'op aanvraag';
+          var t=timelines[sel[2]]||'';
+          document.getElementById('iq-result-body').innerHTML='<strong>'+sel[0]+'</strong> &middot; '+sel[1]+'<br>Indicatief: '+b+'. Doorlooptijd: '+t+'. Plan een gesprek voor een exacte offerte.';
+          document.getElementById('iq-result').style.display='block';
+        }
+      };
+      window.iqReset=function(){
+        sel={};
+        for(var i=0;i<3;i++){
+          document.getElementById('iq-step-'+i).style.display=i===0?'block':'none';
+          document.getElementById('iqd-'+i).className='iq-step-dot'+(i===0?' active':'');
+        }
+        document.getElementById('iq-result').style.display='none';
+      };
+    })();
+    </script>
+  </section>
+
   <!-- CALENDLY BOOKING -->
   <section class="section section--sm" aria-labelledby="cal-heading" style="border-bottom:1px solid var(--grey-border)">
     <div class="container">
