@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Corpshore Nederland — Offerte &amp; Informatie</title>
+  <meta name="description" content="Neem contact op met Corpshore Nederland voor een offerte, informatie of aanbestedingsdocumentatie. Reactie binnen 1 werkdag. nederland@corpshore.nl">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://corpshore.nl/contact/">
+  <link rel="alternate" hreflang="nl" href="https://corpshore.nl/contact/">
+  <link rel="alternate" hreflang="en" href="https://corpshore.nl/en/">
+  <link rel="alternate" hreflang="fy" href="https://corpshore.nl/frysk/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.29.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://corpshore.nl/"},
+      {"@type":"ListItem","position":2,"name":"Contact","item":"https://corpshore.nl/contact/"}
+    ]
+  }
+  </script>
+</head>
+<body>
+<main id="main-content">
+
+  <div class="page-hero">
+    <div class="container page-hero__inner">
+      <h1>Neem contact op</h1>
+      <p>Vertel ons over uw organisatie en outsourcingbehoefte. Wij reageren binnen één werkdag in het Nederlands.</p>
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="grid-2" style="gap:64px;align-items:flex-start">
+
+        <!-- FORM -->
+        <div>
+          <h2 id="contact-heading" style="margin-bottom:8px">Stuur ons een bericht</h2>
+          <span class="orange-rule"></span>
+          <p style="margin-bottom:32px;color:#4a4a5a;font-size:15px">Alle velden met <span style="color:var(--red)">*</span> zijn verplicht. Uw gegevens worden conform AVG Art. 6 lid 1 sub b verwerkt.</p>
+
+          <div class="form-success" role="alert">
+            <i class="ti ti-circle-check" style="font-size:32px;color:var(--navy);margin-bottom:12px;display:block"></i>
+            <h3 style="margin-bottom:8px">Bericht ontvangen</h3>
+            <p>Bedankt voor uw bericht. Wij nemen binnen één werkdag contact met u op.</p>
+          </div>
+          <div class="form-error" role="alert">
+            Er is iets misgegaan bij het verzenden. Probeer het opnieuw of stuur een e-mail naar <a href="mailto:nederland@corpshore.nl">nederland@corpshore.nl</a>.
+          </div>
+
+          <form data-validate action="https://formspree.io/f/placeholder" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Contactformulier corpshore.nl">
+            <input type="hidden" name="source" id="sourceField" value="website">
+
+            <div class="form-grid">
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label for="aanhef">Aanhef</label>
+                  <select id="aanhef" name="aanhef">
+                    <option value="">Selecteer</option>
+                    <option>Dhr.</option>
+                    <option>Mevr.</option>
+                    <option>Drs.</option>
+                    <option>Ir.</option>
+                    <option>Prof.</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="voornaam">Voornaam <span class="req">*</span></label>
+                  <input type="text" id="voornaam" name="voornaam" autocomplete="given-name" data-required placeholder="Jan">
+                  <span class="error-msg">Voornaam is verplicht.</span>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="achternaam">Achternaam <span class="req">*</span></label>
+                <input type="text" id="achternaam" name="achternaam" autocomplete="family-name" data-required placeholder="Jansen">
+                <span class="error-msg">Achternaam is verplicht.</span>
+              </div>
+
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label for="functie">Functietitel <span class="req">*</span></label>
+                  <input type="text" id="functie" name="functietitel" data-required placeholder="Inkoopmanager">
+                  <span class="error-msg">Functietitel is verplicht.</span>
+                </div>
+                <div class="form-field">
+                  <label for="organisatie">Organisatie <span class="req">*</span></label>
+                  <input type="text" id="organisatie" name="organisatie" data-required placeholder="Gemeente Amsterdam">
+                  <span class="error-msg">Organisatienaam is verplicht.</span>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="orgtype">Organisatietype</label>
+                <select id="orgtype" name="organisatietype">
+                  <option value="">Selecteer type</option>
+                  <option>Bedrijf (BV/NV)</option>
+                  <option>Gemeente</option>
+                  <option>Provincie</option>
+                  <option>Ministerie</option>
+                  <option>EU-instelling</option>
+                  <option>NGO / Non-profit</option>
+                  <option>Anders</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="email">E-mailadres <span class="req">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" data-required placeholder="jan.jansen@organisatie.nl">
+                <span class="error-msg">Geldig e-mailadres is verplicht.</span>
+              </div>
+
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label for="tel">Telefoonnummer</label>
+                  <input type="tel" id="tel" name="telefoonnummer" autocomplete="tel" placeholder="+31 20 123 4567">
+                </div>
+                <div class="form-field">
+                  <label for="land">Land <span class="req">*</span></label>
+                  <select id="land" name="land" data-required>
+                    <option value="">Selecteer land</option>
+                    <option selected>Nederland</option>
+                    <option>België</option>
+                    <option>Suriname</option>
+                    <option>Curaçao</option>
+                    <option>Aruba</option>
+                    <option>Duitsland</option>
+                    <option>Anders (EU)</option>
+                    <option>Anders (buiten EU)</option>
+                  </select>
+                  <span class="error-msg">Land is verplicht.</span>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="dienst">Gewenste dienst(en)</label>
+                <select id="dienst" name="gewenste_dienst">
+                  <option value="">Selecteer (of meerdere in bericht)</option>
+                  <option>BPO / Klantcontact</option>
+                  <option>IT-outsourcing</option>
+                  <option>AI-outsourcing / Data-annotatie</option>
+                  <option>Finance &amp; Accounting</option>
+                  <option>HR Outsourcing</option>
+                  <option>Staffaugmentatie</option>
+                  <option>Meerdere diensten</option>
+                  <option>Nog niet bepaald</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="bericht">Uw bericht <span class="req">*</span></label>
+                <textarea id="bericht" name="bericht" rows="5" maxlength="1000" data-required placeholder="Beschrijf kort uw situatie en outsourcingbehoefte…"></textarea>
+                <span class="error-msg">Bericht is verplicht.</span>
+                <span class="text-caption" style="margin-top:4px">Maximaal 1.000 tekens.</span>
+              </div>
+
+              <div class="form-check">
+                <input type="checkbox" id="avg" name="avg_toestemming" value="ja" data-required>
+                <label for="avg">Ik ga akkoord met de verwerking van mijn persoonsgegevens door Corpshore Solutions Corporation ten behoeve van de afhandeling van mijn contactverzoek, conform de <a href="/privacybeleid/">Privacyverklaring</a>. <span class="req">*</span></label>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--lg">Verstuur aanvraag</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- PANEL -->
+        <div>
+          <div class="contact-panel">
+            <h3>Directe contactinformatie</h3>
+
+            <div class="contact-panel__item">
+              <div class="contact-panel__icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+              <div>
+                <p style="font-weight:600;margin-bottom:2px">Algemeen</p>
+                <a href="mailto:nederland@corpshore.nl">nederland@corpshore.nl</a>
+                <p class="text-caption mt-sm">Reactie binnen 1 werkdag</p>
+              </div>
+            </div>
+
+            <div class="contact-panel__item">
+              <div class="contact-panel__icon"><i class="ti ti-building-government" aria-hidden="true"></i></div>
+              <div>
+                <p style="font-weight:600;margin-bottom:2px">Inkoop &amp; Aanbesteding</p>
+                <a href="mailto:procurement@corpshore.nl">procurement@corpshore.nl</a>
+                <p class="text-caption mt-sm">Voor overheidsinstanties en aanbestedingsvragen</p>
+              </div>
+            </div>
+
+            <div class="contact-panel__item">
+              <div class="contact-panel__icon"><i class="ti ti-world" aria-hidden="true"></i></div>
+              <div>
+                <p style="font-weight:600;margin-bottom:2px">Groepsprofiel</p>
+                <a href="https://corpshore.solutions/netherlands/" target="_blank" rel="noopener">corpshore.solutions/netherlands/</a>
+              </div>
+            </div>
+
+            <div class="contact-panel__item">
+              <div class="contact-panel__icon"><i class="ti ti-building" aria-hidden="true"></i></div>
+              <div>
+                <p style="font-weight:600;margin-bottom:2px">Hoofdkantoor</p>
+                <p style="font-size:14px">Corpshore Solutions Corporation<br>Toronto, Ontario, Canada</p>
+              </div>
+            </div>
+
+            <!-- Rankings badges -->
+            <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="background:var(--navy);border-radius:10px;padding:16px;text-align:center">
+                <div style="font-family:var(--font-serif);font-size:22px;color:var(--white)">#2</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:2px">BPO Europa</div>
+              </div>
+              <div style="background:var(--navy);border-radius:10px;padding:16px;text-align:center">
+                <div style="font-family:var(--font-serif);font-size:22px;color:var(--white)">Top 5</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:2px">AI Wereldwijd</div>
+              </div>
+            </div>
+
+            <!-- Gov panel -->
+            <details class="gov-panel" style="margin-top:20px">
+              <summary class="gov-panel summary"><i class="ti ti-building-government" style="font-size:16px"></i> Bent u een overheidsinstantie?</summary>
+              <div class="gov-panel__body">
+                <p>Corpshore Nederland heeft uitgebreide ervaring met aanbestedingstrajecten en kan documentatie aanleveren conform <strong>Aanbestedingswet 2012</strong> en DUMA-vereisten, inclusief:</p>
+                <ul style="list-style:disc;padding-left:20px;margin:10px 0;font-size:13px">
+                  <li>BIO-compliancedocumentatie</li>
+                  <li>AVG Art. 28 verwerkersovereenkomsten</li>
+                  <li>Referenties en capaciteitsverklaring</li>
+                  <li>Bewijs ISO 27001 / ISAE 3402</li>
+                </ul>
+                <p>Neem direct contact op: <a href="mailto:procurement@corpshore.nl">procurement@corpshore.nl</a></p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="/js/main.js" defer></script>
+<script>
+  // Pre-fill subject from URL param
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const subj = params.get('subject');
+    if (subj) {
+      const field = document.getElementById('bericht');
+      if (field && !field.value) field.placeholder = 'Betreft: ' + subj;
+    }
+    const source = params.get('source');
+    if (source) {
+      const sf = document.getElementById('sourceField');
+      if (sf) sf.value = source;
+    }
+  });
+</script>
+</body>
+</html>

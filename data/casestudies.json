@@ -1,0 +1,167 @@
+[
+  {
+    "id": "cs-01",
+    "sector": "Financiële diensten",
+    "clientProfile": "Nederlandse grootbank — top 5 bankgroep",
+    "challenge": "Meertalige klantcontactdiensten (NL/EN/DE/FR) verspreid over vier externe leveranciers met ongelijksoortige SLA-rapportages en dalende CSAT-scores.",
+    "solution": "Corpshore nam alle meertalige klantcontactdiensten over in één managed services contract met uniforme KPI-structuur en Salesforce Service Cloud-integratie.",
+    "result": "CSAT +22%",
+    "resultDetail": "van 74% naar 96% in 9 maanden",
+    "metrics": ["CSAT: 74% → 96%", "FCR: 68% → 88%", "Kosten: -31%"],
+    "compliance": ["AVG Art. 28 DPA", "ISO 27001", "DNB-richtlijnen"]
+  },
+  {
+    "id": "cs-02",
+    "sector": "Rijksoverheid",
+    "clientProfile": "Nederlandse uitvoeringsorganisatie (geanonimiseerd)",
+    "challenge": "Achterstand van 150.000 onverwerkte aanvragen door piekbelasting na beleidswijziging, intern capaciteitstekort en politieke druk om SLA's na te leven.",
+    "solution": "Corpshore leverde een team van 35 agenten binnen 72 uur. Achterstand weggewerkt in 8 weken conform AVG en BIO-beveiligingsvereisten.",
+    "result": "8 weken",
+    "resultDetail": "achterstand weggewerkt, SLA hersteld",
+    "metrics": ["150.000 dossiers verwerkt", "SLA-naleving: 99.2%", "BIO-compliant"],
+    "compliance": ["BIO", "DigiD-koppeling", "AVG"]
+  },
+  {
+    "id": "cs-03",
+    "sector": "E-commerce & Retail",
+    "clientProfile": "Nederlands e-commercebedrijf (B2C, 5 EU-markten)",
+    "challenge": "Uitbreiding van NL naar DE, FR, PL en ES tegelijk vereiste klantcontactcapaciteit in 4 extra talen binnen 6 weken — intern onuitvoerbaar.",
+    "solution": "Corpshore lanceerde vijftalige klantcontactteams (NL/EN/DE/FR/ES) binnen 5 weken via zijn mondiale talentenbestand, met Nederlandse kwaliteitsborging.",
+    "result": "+5 talen",
+    "resultDetail": "in 5 weken gelanceerd",
+    "metrics": ["5 talen in 5 weken", "CSAT ≥ 91% alle markten", "0 verlopen SLA's"],
+    "compliance": ["AVG (EER)", "GDPR Art. 46 SCCs"]
+  },
+  {
+    "id": "cs-04",
+    "sector": "Gemeente & Provincies",
+    "clientProfile": "Middelgrote Nederlandse gemeente (100.000+ inwoners)",
+    "challenge": "150.000 vergunnings- en bestuursdossiers ondigitaal. Digitaliseringsplan 2026-2030 vereiste complete scanning, OCR en indexering inclusief Friese documenten.",
+    "solution": "Corpshore combineerde Inkscribe AI OCR met menselijke validatie door Native Dutch en Frisian speakers. Volledig BIO-compliant, AVG-verwerkersovereenkomst gesloten.",
+    "result": "150k dossiers",
+    "resultDetail": "gedigitaliseerd in 6 maanden",
+    "metrics": ["150.000 dossiers", "Doorlooptijd: 6 mnd", "Nauwkeurigheid: 99.4%"],
+    "compliance": ["BIO", "AVG Art. 28", "Aanbestedingswet 2012"]
+  },
+  {
+    "id": "cs-05",
+    "sector": "Gezondheidszorg",
+    "clientProfile": "Nederlandse zorgverzekeraar (1,2 miljoen verzekerden)",
+    "challenge": "Patiëntcommunicatie in piekseizoen (open inschrijving) vereiste tijdelijke uitbreiding van 80 naar 200 FTE in 4 weken zonder kwaliteitsverlies.",
+    "solution": "Corpshore leverde 120 extra agenten getraind in zorgterminologie en NEN 7510-procedures. Naadloze integratie in bestaande CRM-omgeving.",
+    "result": "120 agenten",
+    "resultDetail": "operationeel in 4 weken",
+    "metrics": ["+120 FTE in 4 weken", "CSAT: 93%", "NEN 7510-compliant"],
+    "compliance": ["NEN 7510", "AVG bijzondere persoonsgegevens", "Wbp"]
+  },
+  {
+    "id": "cs-06",
+    "sector": "Telecom",
+    "clientProfile": "Vlaamse telecomprovider (B2C en B2B)",
+    "challenge": "Stijgende klachten over lange wachttijden (gem. 8 minuten) en lage FCR (61%). Interne opschaling kostbaar door hoge Belgische loonkosten.",
+    "solution": "Corpshore nam Tier 1 en Tier 2 klantenservice over met NL-moedertaalsprekers (Vlaamse register) en implementeerde een kennisbank die FCR structureel verbeterde.",
+    "result": "FCR +27pp",
+    "resultDetail": "van 61% naar 88% in 12 maanden",
+    "metrics": ["FCR: 61% → 88%", "Wachttijd: 8 min → 2.1 min", "Kosten: -28%"],
+    "compliance": ["GDPR BEPA", "AVG Art. 28"]
+  },
+  {
+    "id": "cs-07",
+    "sector": "Logistiek & Transport",
+    "clientProfile": "Rotterdams logistiek bedrijf (Pan-Europese operaties)",
+    "challenge": "Chauffeurs en verladers in 12 landen communiceerden in 9 talen. Geen gestandaardiseerd klantcontactkanaal, hoge miscommunicatie-gerelateerde vertragingen.",
+    "solution": "Corpshore bouwde een negentalig klantcontactteam voor douanedocumentatie, track & trace en chauffeurscommunicatie — vanuit één centraal Corpshore-platform.",
+    "result": "9 talen",
+    "resultDetail": "één platform, 12 landen",
+    "metrics": ["9 talen unified", "Vertragingen: -41%", "Klanttevredenheid: 89%"],
+    "compliance": ["AVG", "AEO-vereisten douane"]
+  },
+  {
+    "id": "cs-08",
+    "sector": "Financiële diensten",
+    "clientProfile": "Nederlandse betaalinstelling (PSP)",
+    "challenge": "KYC-verificaties vertraagden het onboardingproces van zakelijke klanten gemiddeld 14 werkdagen — een concurrentienadeel ten opzichte van Europese fintechs.",
+    "solution": "Corpshore leverde een KYC-team met specialisten in Wwft-compliance dat het doorlooptijden halveerde via gestructureerde document-review workflows.",
+    "result": "14 → 6 dagen",
+    "resultDetail": "KYC-doorlooptijd gehalveerd",
+    "metrics": ["Doorlooptijd: 14 → 6 dgn", "Foutpercentage: 0.3%", "Wwft-compliant"],
+    "compliance": ["Wwft", "AMLD5", "DNB-toezicht"]
+  },
+  {
+    "id": "cs-09",
+    "sector": "Onderwijs",
+    "clientProfile": "Nederlandse universiteit (30.000 studenten)",
+    "challenge": "Studentenadministratie liep vast op piekdagen (inschrijvingsperioden). Internationale studenten konden geen hulp krijgen in het Engels buiten kantoortijden.",
+    "solution": "Corpshore leverde 24/7 eerstelijns studentenservice in NL en EN, inclusief intake-formulieren en doorverwijzingen naar vakafdelingen — geheel AVG-compliant.",
+    "result": "24/7",
+    "resultDetail": "studentenservice NL + EN",
+    "metrics": ["24/7 beschikbaarheid", "Responstijd < 4 uur", "CSAT: 91%"],
+    "compliance": ["AVG", "SURF-beveiligingsnormen"]
+  },
+  {
+    "id": "cs-10",
+    "sector": "MKB",
+    "clientProfile": "Utrechts B2B SaaS-bedrijf (40 medewerkers)",
+    "challenge": "Klantenservice voor drie markten (NL/EN/DE) intern niet te bemensen. Hoge wachttijden en inconsistente antwoordkwaliteit in het Duits beschadigden de merkbeleving.",
+    "solution": "Corpshore nam alle eerstelijns klantenservice over in NL, EN en DE met native speakers. Integratie in bestaand Zendesk-systeem, volledige kennisoverdracht.",
+    "result": "CSAT +18%",
+    "resultDetail": "kosten 50% lager dan intern",
+    "metrics": ["CSAT: +18pp", "Kosten: -50%", "Responstijd: -67%"],
+    "compliance": ["AVG", "GDPR Art. 28 DPA"]
+  },
+  {
+    "id": "cs-11",
+    "sector": "Suriname & Caribisch",
+    "clientProfile": "Surinaams staatsbedrijf (geanonimiseerd)",
+    "challenge": "18 maanden aan onverwerkte correspondentie en klantdossiers blokkeerden de operationele dienstverlening. Intern team ontbrak capaciteit en gestructureerde werkwijze.",
+    "solution": "Corpshore zette een dedicated team in met Surinaams-Nederlandstalige medewerkers en een gestructureerde backlog-aanpak. Achterstand weggewerkt in 90 dagen.",
+    "result": "90 dagen",
+    "resultDetail": "18 maanden achterstand weggewerkt",
+    "metrics": ["18 mnd achterstand: 90 dgn", "Proces gedocumenteerd", "Team overgedragen"],
+    "compliance": ["Surinaamse Arbeidswet", "Lokale privacyregels"]
+  },
+  {
+    "id": "cs-12",
+    "sector": "EU-instellingen",
+    "clientProfile": "Europese agentschap met Nederlandstalig mandaat",
+    "challenge": "Communicatiediensten in NL, EN en FR voor Europese stakeholders vereisten native speakers met kennis van EU-jargon en specifieke terminologie.",
+    "solution": "Corpshore leverde een drietalig communicatieteam met EU-terminologietraining en CAT-tool gestandaardiseerde vertalingen, inclusief post-editing van machinevertalingen.",
+    "result": "3 talen",
+    "resultDetail": "EU-terminologie gecertificeerd",
+    "metrics": ["NL/EN/FR native teams", "Vertaalkwaliteit: 98.7%", "On-time delivery: 99%"],
+    "compliance": ["EU GDPR", "Publicatiebureau EU stijlgids"]
+  },
+  {
+    "id": "cs-13",
+    "sector": "Financiële diensten",
+    "clientProfile": "Nederlandse verzekeraar (schadeverzekeringen)",
+    "challenge": "Klachtenafhandeling duurde gemiddeld 22 werkdagen door papieren processen en gebrek aan gespecialiseerde medewerkers in Wft-compliance.",
+    "solution": "Corpshore implementeerde een digitale klachtenroute met getrainde Wft-specialisten en gestructureerde escalatieprotocollen. Doorlooptijd structureel teruggebracht.",
+    "result": "22 → 8 dagen",
+    "resultDetail": "klachtenafhandeling",
+    "metrics": ["Doorlooptijd: 22 → 8 dgn", "Escalaties: -44%", "Wft-compliant"],
+    "compliance": ["Wft", "AFM Klachtenregeling", "AVG"]
+  },
+  {
+    "id": "cs-14",
+    "sector": "Gemeente & Provincies",
+    "clientProfile": "Friese gemeente — Provincie Fryslân",
+    "challenge": "Wet gebruik Friese taal vereist Friestalige service maar gemeente kon geen Friestalige medewerkers werven. Klanten in het Fries werden doorverwezen naar Nederlandstalige service.",
+    "solution": "Corpshore leverde native Friestalige klantenservicemedewerkers voor telefonisch en schriftelijk klantcontact, inclusief training in gemeentelijke procedures.",
+    "result": "100%",
+    "resultDetail": "Friestalige servicedekking",
+    "metrics": ["100% Frysk-dekking", "CSAT: 94%", "Wet Fries taal-compliant"],
+    "compliance": ["Wet gebruik Friese taal 2014", "AVG", "BIO"]
+  },
+  {
+    "id": "cs-15",
+    "sector": "Vlaamse onderneming",
+    "clientProfile": "Vlaamse industriële groep (DACH-expansie)",
+    "challenge": "Expansie naar Duitsland, Oostenrijk en Zwitserland vereiste Duitstalige klantenservice, technische ondersteuning en backoffice — intern niet aanwezig.",
+    "solution": "Corpshore lanceerde een Duitstalig (DACH-register) klantcontactteam van 12 agenten met technische producttraining, volledig geïntegreerd in SAP-CRM-omgeving.",
+    "result": "DACH in 6 weken",
+    "resultDetail": "volledig operationeel",
+    "metrics": ["12 agenten in 6 weken", "NPS: +34", "SAP-integratie dag 1"],
+    "compliance": ["DSGVO (DE-GDPR)", "AVG Art. 46 SCCs"]
+  }
+]
