@@ -6,7 +6,7 @@
 
 /* ── 1. CONFIG ─────────────────────────────────────────────── */
 const CFG = {
-  formEndpoint: 'https://formspree.io/f/placeholder', // replace with real ID
+  formEndpoint: '/api/contact',
   cookieName:   'corpshore_nl_consent',
   cookieExpiry: 365,
   defaultLang:  'nl',
@@ -113,8 +113,7 @@ function buildFooter() {
       </div>
       <div class="footer__contact">
         <p class="footer__heading">Contact</p>
-        <a href="mailto:nederland@corpshore.nl">nederland@corpshore.nl</a>
-        <a href="mailto:procurement@corpshore.nl">procurement@corpshore.nl</a>
+        <a href="mailto:info@corpshore.solutions">info@corpshore.solutions</a>
         <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,.4)">Corpshore Solutions Corporation<br>Toronto, Ontario, Canada</p>
         <p style="margin-top:12px">
           <a href="https://corpshore.solutions/netherlands/" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.5)">corpshore.solutions/netherlands/</a>
@@ -280,11 +279,13 @@ function initForms() {
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Verzenden...'; }
 
       try {
-        const data = new FormData(form);
+        const rawData = new FormData(form);
+        const data    = {};
+        rawData.forEach((val, key) => { data[key] = val; });
         const res  = await fetch(form.action || CFG.formEndpoint, {
           method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' },
+          body:    JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         });
         if (res.ok) {
           form.style.display = 'none';

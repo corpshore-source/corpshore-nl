@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.29.0/tabler-icons.min.css">
   <link rel="stylesheet" href="/css/main.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,7 +47,7 @@
 
       <!-- Frisian note -->
       <div style="background:rgba(10,36,99,.05);border-left:3px solid var(--orange);border-radius:0 8px 8px 0;padding:14px 20px;margin-bottom:40px">
-        <p style="font-size:14px;color:var(--navy);margin:0"><strong>Frysk?</strong> Prate jo Frysk? Wy sjogge jo graach. Sjoch ús regionale fakânsjes hjirûnder of nim kontakt op fia <a href="mailto:nederland@corpshore.nl" style="color:var(--navy);font-weight:600">nederland@corpshore.nl</a>.</p>
+        <p style="font-size:14px;color:var(--navy);margin:0"><strong>Frysk?</strong> Prate jo Frysk? Wy sjogge jo graach. Sjoch ús regionale fakânsjes hjirûnder of nim kontakt op fia <a href="mailto:info@corpshore.solutions" style="color:var(--navy);font-weight:600">info@corpshore.solutions</a>.</p>
       </div>
 
       <!-- Filters -->
@@ -103,10 +104,10 @@
               <p>Bedankt voor uw interesse in Corpshore. Wij nemen binnen 5 werkdagen contact op.</p>
             </div>
             <div class="form-error" role="alert">
-              Er is iets misgegaan. Probeer het opnieuw of e-mail naar <a href="mailto:nederland@corpshore.nl">nederland@corpshore.nl</a>.
+              Er is iets misgegaan. Probeer het opnieuw of e-mail naar <a href="mailto:info@corpshore.solutions">info@corpshore.solutions</a>.
             </div>
 
-            <form data-validate action="https://formspree.io/f/placeholder" method="POST" enctype="multipart/form-data" novalidate>
+            <form data-validate action="/api/apply" method="POST" novalidate>
               <input type="hidden" name="_subject" value="Sollicitatie corpshore.nl">
               <div class="form-grid">
                 <div class="form-field">
@@ -178,6 +179,7 @@
                   <input type="checkbox" id="talent-pool" name="talentenbestand" value="ja">
                   <label for="talent-pool">Ik geef aanvullend toestemming voor opname in het talentenbestand van Corpshore Nederland (maximaal 1 jaar). U kunt deze toestemming te allen tijde intrekken.</label>
                 </div>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAEFilZvgKq0--869" style="margin-bottom:8px"></div>
                 <button type="submit" class="btn btn--primary btn--lg">Sollicitatie versturen</button>
               </div>
             </form>
