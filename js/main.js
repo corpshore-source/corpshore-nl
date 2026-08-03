@@ -50,8 +50,7 @@ function buildNav() {
 <nav class="nav" role="navigation" aria-label="Hoofdnavigatie">
   <div class="container nav__inner">
     <a href="/" class="nav__brand" aria-label="Corpshore Nederland — Startpagina">
-      <span class="nav__logo-wordmark">Corpshore</span>
-      <span class="nav__logo-sub">Nederland</span>
+      <img src="/images/Corpshore Nederland Logo.png" alt="Corpshore Nederland" height="40" style="height:40px;width:auto;display:block;max-width:200px">
     </a>
     <ul class="nav__links" role="list">${li}</ul>
     <div class="nav__actions">
@@ -83,9 +82,9 @@ function buildFooter() {
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a href="/" aria-label="Corpshore Nederland — Home">
-          <span class="nav__logo-wordmark">Corpshore</span>
-          <span class="nav__logo-sub">Nederland</span>
+        <a href="/" aria-label="Corpshore Nederland — Home" style="display:flex;align-items:center;gap:10px">
+          <img src="/favicon.png" alt="" aria-hidden="true" style="width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0">
+          <span style="font-family:var(--font-serif);font-size:18px;color:var(--white);line-height:1.2">Corpshore<br><span style="font-size:12px;letter-spacing:.08em;font-family:var(--font-sans);font-weight:600;opacity:.7">NEDERLAND</span></span>
         </a>
         <p class="footer__tagline">De mondiale outsourcingpartner voor de Nederlandstalige wereld. #2 BPO in Europa (Outsource Accelerator 2026).</p>
       </div>
@@ -158,6 +157,17 @@ function buildCookieBanner() {
 function injectShell() {
   document.body.insertAdjacentHTML('afterbegin', buildNav() + buildCookieBanner());
   document.body.insertAdjacentHTML('beforeend', buildFooter());
+
+  // Favicon
+  [
+    { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/favicon.png' },
+    { rel: 'shortcut icon', type: 'image/png', href: '/favicon.png' },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+  ].forEach(attrs => {
+    const link = document.createElement('link');
+    Object.entries(attrs).forEach(([k, v]) => link.setAttribute(k, v));
+    document.head.appendChild(link);
+  });
 
   // Hamburger
   const hamburger = $('#hamburger');
