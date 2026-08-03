@@ -50,7 +50,11 @@ function buildNav() {
 <nav class="nav" role="navigation" aria-label="Hoofdnavigatie">
   <div class="container nav__inner">
     <a href="/" class="nav__brand" aria-label="Corpshore Nederland — Startpagina">
-      <img src="/images/Corpshore Nederland Logo.png" alt="Corpshore Nederland" height="40" style="height:40px;width:auto;display:block;max-width:200px">
+      <img src="/favicon.png" alt="" class="nav__logo-icon" aria-hidden="true">
+      <div class="nav__logo-text">
+        <span class="nav__logo-wordmark">Corpshore</span>
+        <span class="nav__logo-sub">Nederland</span>
+      </div>
     </a>
     <ul class="nav__links" role="list">${li}</ul>
     <div class="nav__actions">
@@ -82,9 +86,12 @@ function buildFooter() {
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a href="/" aria-label="Corpshore Nederland — Home" style="display:flex;align-items:center;gap:10px">
-          <img src="/favicon.png" alt="" aria-hidden="true" style="width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0">
-          <span style="font-family:var(--font-serif);font-size:18px;color:var(--white);line-height:1.2">Corpshore<br><span style="font-size:12px;letter-spacing:.08em;font-family:var(--font-sans);font-weight:600;opacity:.7">NEDERLAND</span></span>
+        <a href="/" aria-label="Corpshore Nederland — Home" class="footer__brand-link">
+          <img src="/favicon.png" alt="" class="nav__logo-icon footer__logo-icon" aria-hidden="true">
+          <div class="nav__logo-text">
+            <span class="nav__logo-wordmark nav__logo-wordmark--white">Corpshore</span>
+            <span class="nav__logo-sub">Nederland</span>
+          </div>
         </a>
         <p class="footer__tagline">De mondiale outsourcingpartner voor de Nederlandstalige wereld. #2 BPO in Europa (Outsource Accelerator 2026).</p>
       </div>
@@ -495,7 +502,144 @@ function renderCases(list) {
   $$('.fade-up', grid).forEach(el => el.classList.add('visible'));
 }
 
-/* ── 13. INIT ───────────────────────────────────────────────── */
+/* ── 13. SCROLL PROGRESS BAR ────────────────────────────────── */
+function initScrollProgress() {
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.prepend(bar);
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+}
+
+/* ── 14. COUNT-UP NUMBERS ───────────────────────────────────── */
+function initCounters() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target   = parseFloat(el.dataset.count);
+      const suffix   = el.dataset.countSuffix || '';
+      const prefix   = el.dataset.countPrefix || '';
+      const duration = 1800;
+      const start    = performance.now();
+      const frame = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = prefix + Math.round(ease * target) + suffix;
+        if (t < 1) requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => obs.observe(el));
+}
+
+/* ── 15. SCROLL-TO-TOP ──────────────────────────────────────── */
+function initScrollToTop() {
+  const btn = document.createElement('button');
+  btn.className = 'scroll-top';
+  btn.setAttribute('aria-label', 'Terug naar boven');
+  btn.innerHTML = '<i class="ti ti-arrow-up" aria-hidden="true"></i>';
+  document.body.appendChild(btn);
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ── 16. SOCIAL PROOF TOAST ─────────────────────────────────── */
+function initSocialProof() {
+  const msgs = [
+    { icon: '🏢', text: 'Een organisatie uit Amsterdam vroeg zojuist een offerte aan.' },
+    { icon: '📞', text: '3 bedrijven planden deze week een ontdekkingsgesprek.' },
+    { icon: '🇧🇪', text: 'Een Vlaamse verzekeraar startte een pilotproject.' },
+    { icon: '🌍', text: 'Nieuw klantproject gestart in 3 talen via Corpshore.' },
+  ];
+  const m = msgs[Math.floor(Math.random() * msgs.length)];
+  setTimeout(() => {
+    const el = document.createElement('div');
+    el.className = 'social-toast';
+    el.innerHTML = `
+      <span class="social-toast__icon">${m.icon}</span>
+      <span class="social-toast__text">${m.text}</span>
+      <button class="social-toast__close" aria-label="Sluiten">×</button>`;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
+    const close = () => { el.classList.remove('visible'); setTimeout(() => el.remove(), 400); };
+    el.querySelector('.social-toast__close').addEventListener('click', close);
+    setTimeout(close, 8000);
+  }, 6000);
+}
+
+/* ── 17. FLOATING CTA ───────────────────────────────────────── */
+function initFloatingCTA() {
+  const fab = document.createElement('a');
+  fab.href = '/contact/';
+  fab.className = 'float-cta';
+  fab.setAttribute('aria-label', 'Plan een gesprek');
+  fab.innerHTML = `
+    <i class="ti ti-calendar-event float-cta__icon" aria-hidden="true"></i>
+    <span class="float-cta__label">Plan een gesprek</span>`;
+  document.body.appendChild(fab);
+  window.addEventListener('scroll', () => {
+    fab.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+}
+
+/* ── 18. HERO SERVICE ROTATOR ───────────────────────────────── */
+function initHeroTyped() {
+  const hero = document.querySelector('.hero__content');
+  if (!hero) return;
+  const words = ['BPO', 'IT-outsourcing', 'AI-outsourcing', 'Meertalige support', 'Softwareontwikkeling'];
+  let idx = 0;
+  const wrap = document.createElement('div');
+  wrap.className = 'hero__rotator';
+  wrap.innerHTML = `<span class="rotator__prefix">Wij leveren </span><span class="rotator__word" id="rotatorWord">${words[0]}</span><span class="rotator__cursor" aria-hidden="true">|</span>`;
+  const eyebrow = hero.querySelector('.hero__eyebrow');
+  if (eyebrow) eyebrow.insertAdjacentElement('afterend', wrap);
+  const wordEl = document.getElementById('rotatorWord');
+  setInterval(() => {
+    wordEl.classList.add('rotator--exit');
+    setTimeout(() => {
+      idx = (idx + 1) % words.length;
+      wordEl.textContent = words[idx];
+      wordEl.classList.replace('rotator--exit', 'rotator--enter');
+      requestAnimationFrame(() => requestAnimationFrame(() => wordEl.classList.remove('rotator--enter')));
+    }, 280);
+  }, 2800);
+}
+
+/* ── 19. SERVICE CARD 3D TILT ───────────────────────────────── */
+function initCardTilt() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  document.querySelectorAll('.card--service').forEach(card => {
+    card.style.transition = 'box-shadow 240ms ease, transform 120ms ease';
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      card.style.transform = `perspective(600px) rotateX(${-y * 7}deg) rotateY(${x * 7}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+}
+
+/* ── 20. HERO MOUSE PARALLAX ────────────────────────────────── */
+function initHeroParallax() {
+  const hero = document.querySelector('.hero');
+  if (!hero || window.matchMedia('(pointer: coarse)').matches) return;
+  document.addEventListener('mousemove', e => {
+    const x = ((e.clientX / window.innerWidth)  - 0.5) * 14;
+    const y = ((e.clientY / window.innerHeight) - 0.5) * 14;
+    hero.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+  }, { passive: true });
+}
+
+/* ── 21. INIT ───────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   injectShell();
   initScrollAnimations();
@@ -504,4 +648,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initJobBoard();
   initBlogBoard();
   initCaseStudies();
+  initScrollProgress();
+  initCounters();
+  initScrollToTop();
+  initSocialProof();
+  initFloatingCTA();
+  initHeroTyped();
+  initCardTilt();
+  initHeroParallax();
 });
