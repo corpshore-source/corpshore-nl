@@ -25,6 +25,62 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Outsourcingdiensten Corpshore Nederland",
+    "description": "BPO, IT-outsourcing en AI-outsourcing voor Nederlandse en Vlaamse organisaties.",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Business Process Outsourcing (BPO)",
+          "description": "Meertalig klantcontact, back-office verwerking, financiële administratie en documentbeheer in 35+ talen. AVG-compliant. 24/7 beschikbaar.",
+          "provider": { "@type": "Organization", "name": "Corpshore Nederland", "url": "https://corpshore.nl" },
+          "areaServed": ["NL","BE","SR","EU"],
+          "serviceType": "Business Process Outsourcing"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "IT-outsourcing en Softwareontwikkeling",
+          "description": "Dedicated development teams, staff augmentation en managed IT. Full-stack expertise inclusief SAP, Salesforce en cloud-native architecturen.",
+          "provider": { "@type": "Organization", "name": "Corpshore Nederland", "url": "https://corpshore.nl" },
+          "areaServed": ["NL","BE","SR","EU"],
+          "serviceType": "IT Outsourcing"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "AI-outsourcing: Corpshore AI",
+          "description": "Data-annotatie, LLM-training, RPA-implementatie en intelligente documentverwerking. Top 5 wereldwijd in AI-outsourcing (Outsource Accelerator 2026).",
+          "provider": { "@type": "Organization", "name": "Corpshore Nederland", "url": "https://corpshore.nl" },
+          "areaServed": ["NL","BE","SR","EU"],
+          "serviceType": "AI Outsourcing"
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Geo signals -->
+  <meta name="geo.region" content="NL">
+  <meta name="geo.placename" content="Nederland">
+  <meta name="ICBM" content="52.3676, 4.9041">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CorpshoreNL">
+  <meta name="twitter:title" content="BPO, IT &amp; AI Outsourcingdiensten voor Nederland | Corpshore">
+  <meta name="twitter:description" content="BPO, IT-outsourcing, AI-outsourcing, finance en HR-diensten voor Nederlandse en Vlaamse organisaties. AVG-compliant. BIO-beveiligd. Schaalbaar. Corpshore Nederland.">
+  <meta name="twitter:image" content="https://corpshore.nl/images/hero-amsterdam-canal-operations.webp">
 </head>
 <body>
 <main id="main-content">
@@ -348,14 +404,18 @@
         });
         grid.appendChild(btn);
       });
+      function langFireEvent(){
+        fetch('/api/tool-event',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tool:'Taaldekkingschecker',selections:{'Geselecteerde talen':Array.from(sel).join(', '),'Aantal talen':sel.size},result:sel.size+' talen geselecteerd',referrer:'/diensten/'})}).catch(function(){});
+      }
       function updateResult(){
         var res=document.getElementById('lang-result');
         var n=sel.size;
         if(!n){res.style.display='none';return;}
         res.style.display='flex';
-        if(n<=5) res.innerHTML='<strong>&#10003; Volledig gedekt.</strong>&nbsp;Corpshore levert al uw '+n+' geselecteerde '+(n===1?'taal':'talen')+' met native medewerkers. <a href="/contact/" class="btn btn--primary" style="margin-left:auto;flex-shrink:0">Offerte aanvragen</a>';
-        else if(n<=20) res.innerHTML='<strong>&#10003; Volledig gedekt.</strong>&nbsp;'+n+' talen. Corpshore beschikt over native speakers voor al uw selectie. Meertalige schaalvoordelen direct beschikbaar. <a href="/contact/" class="btn btn--primary" style="margin-left:auto;flex-shrink:0">Capaciteit bespreken</a>';
-        else res.innerHTML='<strong>&#10003; Dekking '+Math.min(100,Math.round(n/35*100))+'%.</strong>&nbsp;'+n+' talen geselecteerd. Corpshore dekt alle 35 catalogustalen met native of near-native capaciteit. <a href="/contact/" class="btn btn--primary" style="margin-left:auto;flex-shrink:0">Plan een gesprek</a>';
+        var cta='onclick="langFireEvent()"';
+        if(n<=5) res.innerHTML='<strong>&#10003; Volledig gedekt.</strong>&nbsp;Corpshore levert al uw '+n+' geselecteerde '+(n===1?'taal':'talen')+' met native medewerkers. <a href="/contact/" class="btn btn--primary" style="margin-left:auto;flex-shrink:0" '+cta+'>Offerte aanvragen</a>';
+        else if(n<=20) res.innerHTML='<strong>&#10003; Volledig gedekt.</strong>&nbsp;'+n+' talen. Corpshore beschikt over native speakers voor al uw selectie. Meertalige schaalvoordelen direct beschikbaar. <a href="/contact/" class="btn btn--primary" style="margin-left:auto;flex-shrink:0" '+cta+'>Capaciteit bespreken</a>';
+        else res.innerHTML='<strong>&#10003; Dekking '+Math.min(100,Math.round(n/35*100))+'%.</strong>&nbsp;'+n+' talen geselecteerd. Corpshore dekt alle 35 catalogustalen met native of near-native capaciteit. <a href="/contact/" class="btn btn--primary" style="margin-left:auto;flex-shrink:0" '+cta+'>Plan een gesprek</a>';
       }
     })();
     </script>
@@ -428,6 +488,7 @@
           document.getElementById('dm-body').textContent=m.body;
           document.getElementById('dm-link').href=m.href;
           document.getElementById('dm-result').style.display='block';
+          fetch('/api/tool-event',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tool:'Dienstmatcher',selections:{'Primaire uitdaging':sel[0],'Urgentie':sel[1],'Teamgrootte':sel[2]},result:m.title,referrer:'/diensten/'})}).catch(function(){});
         }
       };
       window.dmReset=function(){

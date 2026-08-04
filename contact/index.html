@@ -27,6 +27,16 @@
     ]
   }
   </script>
+  <!-- Geo signals -->
+  <meta name="geo.region" content="NL">
+  <meta name="geo.placename" content="Nederland">
+  <meta name="ICBM" content="52.3676, 4.9041">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CorpshoreNL">
+  <meta name="twitter:title" content="Contact | Corpshore Nederland: Offerte &amp; Informatie">
+  <meta name="twitter:description" content="Neem contact op met Corpshore Nederland voor een offerte, informatie of aanbestedingsdocumentatie. Reactie binnen 1 werkdag. info@corpshore.solutions">
+  <meta name="twitter:image" content="https://corpshore.nl/images/hero-amsterdam-canal-operations.webp">
 </head>
 <body>
 <main id="main-content">
@@ -115,6 +125,7 @@
           var t=timelines[sel[2]]||'';
           document.getElementById('iq-result-body').innerHTML='<strong>'+sel[0]+'</strong> &middot; '+sel[1]+'<br>Indicatief: '+b+'. Doorlooptijd: '+t+'. Plan een gesprek voor een exacte offerte.';
           document.getElementById('iq-result').style.display='block';
+          fetch('/api/tool-event',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tool:'Instant Offertecheck',selections:{'Dienst':sel[0],'Seats':sel[1],'Startmoment':sel[2],'Indicatief budget':b,'Doorlooptijd':t},result:sel[0]+' · '+sel[1],referrer:'/contact/'})}).catch(function(){});
         }
       };
       window.iqReset=function(){

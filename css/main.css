@@ -2221,3 +2221,42 @@ h2 { letter-spacing: -.015em; }
   .lang-grid  { gap: 6px; }
   .quiz-widget { min-height: 280px; }
 }
+
+/* ── FAQ ACCORDION ───────────────────────────────────────────── */
+.faq-item {
+  border-bottom: 1px solid var(--grey-border);
+  padding: 0;
+}
+.faq-item:first-child { border-top: 1px solid var(--grey-border); }
+.faq-question {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  user-select: none;
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--orange);
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+details[open] .faq-question::after { content: '−'; }
+.faq-answer {
+  font-size: 15px;
+  color: #3a3a4a;
+  line-height: 1.7;
+  padding: 0 0 20px 0;
+  font-family: var(--font-ui);
+  max-width: 720px;
+}
