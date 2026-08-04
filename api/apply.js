@@ -42,8 +42,8 @@ module.exports = async function handler(req, res) {
       const firstName = parts[0] || '';
       const lastName  = parts.slice(1).join(' ') || firstName;
 
-      /* Create Recruit Candidate */
-      await fetch('https://recruit.zoho.com/recruit/v2/Candidates', {
+      /* Create Recruit Candidate — capture ID for CV attachment */
+      const recruitRes = await fetch('https://recruit.zoho.com/recruit/v2/Candidates', {
         method:  'POST',
         headers: {
           Authorization:  `Zoho-oauthtoken ${accessToken}`,
@@ -54,15 +54,38 @@ module.exports = async function handler(req, res) {
             First_Name:              firstName,
             Last_Name:               lastName,
             Email:                   body.email,
-            Mobile:                  body.telefoon || '',
-            Current_Location:        body.woonland || '',
-            LinkedIn_Profile:        body.linkedin || '',
+            Mobile:                  body.telefoon    || '',
+            Current_Location:        body.woonland    || '',
+            LinkedIn_Profile:        body.linkedin    || '',
             Current_Job_Description: body.gewenste_functie || '',
-            Cover_Letter:            body.motivatiebrief || '',
+            Cover_Letter:            body.motivatiebrief  || '',
             Source:                  'corpshore.nl/vacatures/',
           }],
         }),
-      }).catch(err => console.error('Recruit error:', err));
+      });
+
+      const recruitData = await recruitRes.json();
+      const candidateId = recruitData?.data?.[0]?.details?.id;
+
+      /* Upload CV file to Recruit Candidate */
+      if (candidateId && Array.isArray(body.attachments) && body.attachments.length) {
+        for (const att of body.attachments) {
+          if (!att.name || !att.data) continue;
+          try {
+            const buffer = Buffer.from(att.data, 'base64');
+            const blob   = new Blob([buffer], { type: att.type || 'application/octet-stream' });
+            const fd     = new FormData();
+            fd.append('file', blob, att.name);
+            await fetch(`https://recruit.zoho.com/recruit/v2/Candidates/${candidateId}/Attachments`, {
+              method:  'POST',
+              headers: { Authorization: `Zoho-oauthtoken ${accessToken}` },
+              body:    fd,
+            }).catch(e => console.error('Recruit attachment error:', e));
+          } catch (e) {
+            console.error('CV file encoding error:', e);
+          }
+        }
+      }
 
       /* Campaigns subscription if talent pool consent given */
       if (body.talentenbestand === 'ja' && process.env.ZOHO_CAMPAIGNS_LIST_KEY) {
@@ -79,7 +102,7 @@ module.exports = async function handler(req, res) {
         await fetch(`https://campaigns.zoho.com/api/v1.1/json/listsubscribe?${cpParams}`, {
           method:  'POST',
           headers: { Authorization: `Zoho-oauthtoken ${accessToken}` },
-        }).catch(err => console.error('Campaigns error:', err));
+        }).catch(e => console.error('Campaigns error:', e));
       }
     }
 

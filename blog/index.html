@@ -41,35 +41,35 @@
 
   <div class="page-hero">
     <div class="container page-hero__inner">
-      <h1>Blog &amp; Inzichten</h1>
-      <p>Analyses, praktijkgidsen en marktinzichten voor Nederlandse en Europese beslissers. Doelgroep: inkoopmanagers, CIO's, CFO's en HR-directeuren.</p>
+      <h1 data-nl="Blog &amp; Inzichten" data-en="Blog &amp; Insights">Blog &amp; Inzichten</h1>
+      <p data-nl="Analyses, praktijkgidsen en marktinzichten voor Nederlandse en Europese beslissers. Doelgroep: inkoopmanagers, CIO&#x27;s, CFO&#x27;s en HR-directeuren." data-en="Analysis, practical guides and market insights for Dutch and European decision-makers. Audience: procurement managers, CIOs, CFOs and HR directors.">Analyses, praktijkgidsen en marktinzichten voor Nederlandse en Europese beslissers. Doelgroep: inkoopmanagers, CIO's, CFO's en HR-directeuren.</p>
     </div>
   </div>
 
   <section class="section" aria-labelledby="blog-heading">
     <div class="container">
-      <h2 id="blog-heading" class="h3" style="margin-bottom:20px">Recente artikelen</h2>
+      <h2 id="blog-heading" class="h3" style="margin-bottom:20px" data-nl="Recente artikelen" data-en="Recent articles">Recente artikelen</h2>
 
       <!-- Featured -->
-      <div id="featuredArticle" aria-label="Uitgelicht artikel"></div>
+      <div id="featuredArticle" aria-label="Uitgelicht artikel" data-nl-aria="Uitgelicht artikel" data-en-aria="Featured article"></div>
 
       <!-- Category filter -->
-      <div class="category-filter" id="blogFilter" role="tablist" aria-label="Categoriefilter">
+      <div class="category-filter" id="blogFilter" role="tablist" aria-label="Categoriefilter" data-nl-aria="Categoriefilter" data-en-aria="Category filter">
         <!-- injected by JS -->
       </div>
 
       <!-- Grid -->
-      <div id="blogGrid" class="grid-3" role="list" aria-live="polite" aria-label="Artikellijst">
-        <p style="color:var(--grey-mid)">Artikelen worden geladen…</p>
+      <div id="blogGrid" class="grid-3" role="list" aria-live="polite" aria-label="Artikellijst" data-nl-aria="Artikellijst" data-en-aria="Article list">
+        <p style="color:var(--grey-mid)" data-nl="Artikelen worden geladen…" data-en="Loading articles…">Artikelen worden geladen…</p>
       </div>
 
       <!-- Newsletter CTA -->
       <div style="margin-top:80px;background:var(--grey-light);border-radius:var(--radius-card);padding:48px;text-align:center">
-        <h2 style="margin-bottom:12px">Blijf op de hoogte</h2>
-        <p style="max-width:480px;margin:0 auto 28px;color:#4a4a5a">Ontvang nieuwe analyses en praktijkgidsen direct in uw inbox. Maximaal twee keer per maand.</p>
+        <h2 style="margin-bottom:12px" data-nl="Blijf op de hoogte" data-en="Stay informed">Blijf op de hoogte</h2>
+        <p style="max-width:480px;margin:0 auto 28px;color:#4a4a5a" data-nl="Ontvang nieuwe analyses en praktijkgidsen direct in uw inbox. Maximaal twee keer per maand." data-en="Receive new analyses and practical guides directly in your inbox. A maximum of twice per month.">Ontvang nieuwe analyses en praktijkgidsen direct in uw inbox. Maximaal twee keer per maand.</p>
         <form id="newsletterForm" style="display:flex;gap:12px;max-width:420px;margin:0 auto">
-          <input type="email" id="newsletterEmail" placeholder="uw@e-mailadres.nl" required style="flex:1;padding:12px 14px;border:1.5px solid var(--grey-border);border-radius:8px;font-family:inherit;font-size:15px">
-          <button type="submit" class="btn btn--primary">Aanmelden</button>
+          <input type="email" id="newsletterEmail" placeholder="uw@e-mailadres.nl" data-nl-ph="uw@e-mailadres.nl" data-en-ph="your@emailaddress.com" required style="flex:1;padding:12px 14px;border:1.5px solid var(--grey-border);border-radius:8px;font-family:inherit;font-size:15px">
+          <button type="submit" class="btn btn--primary" data-nl="Aanmelden" data-en="Subscribe">Aanmelden</button>
         </form>
         <script>
           document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
@@ -91,7 +91,7 @@
             }
           });
         </script>
-        <p style="font-size:12px;color:var(--grey-mid);margin-top:12px">Uw gegevens worden niet gedeeld. Uitschrijven kan altijd. <a href="/privacybeleid/" style="color:var(--grey-mid)">Privacybeleid</a></p>
+        <p style="font-size:12px;color:var(--grey-mid);margin-top:12px"><span data-nl="Uw gegevens worden niet gedeeld. Uitschrijven kan altijd. " data-en="Your data will not be shared. You may unsubscribe at any time. ">Uw gegevens worden niet gedeeld. Uitschrijven kan altijd. </span><a href="/privacybeleid/" style="color:var(--grey-mid)" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a></p>
       </div>
 
     </div>

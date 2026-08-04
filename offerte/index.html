@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offerte Aanvragen | Corpshore Nederland</title>
+  <meta name="description" content="Vraag een offerte aan bij Corpshore Nederland voor BPO, IT-outsourcing, AI-outsourcing of Finance &amp; HR. Gedetailleerd, vrijblijvend en binnen 1 werkdag reactie.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://corpshore.nl/offerte/">
+  <link rel="alternate" hreflang="nl" href="https://corpshore.nl/offerte/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.29.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://corpshore.nl/"},
+      {"@type":"ListItem","position":2,"name":"Offerte aanvragen","item":"https://corpshore.nl/offerte/"}
+    ]
+  }
+  </script>
+  <!-- Geo signals -->
+  <meta name="geo.region" content="NL">
+  <meta name="geo.placename" content="Nederland">
+  <meta name="ICBM" content="52.3676, 4.9041">
+</head>
+<body>
+<main id="main-content">
+
+  <div class="page-hero">
+    <div class="container page-hero__inner">
+      <h1 data-nl="Offerte aanvragen" data-en="Request a Proposal">Offerte aanvragen</h1>
+      <p data-nl="Vul het formulier in zodat wij u een nauwkeurige offerte kunnen sturen. Wij reageren binnen één werkdag." data-en="Complete the form so we can send you an accurate proposal. We respond within one business day.">Vul het formulier in zodat wij u een nauwkeurige offerte kunnen sturen. Wij reageren binnen één werkdag.</p>
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="offerte-heading">
+    <div class="container">
+      <div class="grid-2" style="gap:64px;align-items:flex-start">
+
+        <!-- FORM -->
+        <div>
+          <p style="margin-bottom:32px;color:#4a4a5a;font-size:15px">
+            <span data-nl="Alle velden met" data-en="All fields marked">Alle velden met</span>
+            <span style="color:var(--red)"> * </span>
+            <span data-nl="zijn verplicht. Bijlagen (PDF, Word, Excel, PowerPoint, CSV, afbeeldingen) worden direct naar ons CRM-systeem gestuurd." data-en="are required. Attachments (PDF, Word, Excel, PowerPoint, CSV, images) are sent directly to our CRM system.">zijn verplicht. Bijlagen (PDF, Word, Excel, PowerPoint, CSV, afbeeldingen) worden direct naar ons CRM-systeem gestuurd.</span>
+          </p>
+
+          <div class="form-success" role="alert">
+            <i class="ti ti-circle-check" style="font-size:32px;color:var(--navy);margin-bottom:12px;display:block"></i>
+            <h3 data-nl="Offerteaanvraag ontvangen" data-en="Proposal request received" style="margin-bottom:8px">Offerteaanvraag ontvangen</h3>
+            <p data-nl="Bedankt voor uw aanvraag. Wij nemen binnen één werkdag contact met u op met een op maat gemaakte offerte." data-en="Thank you for your request. We will contact you within one business day with a tailored proposal.">Bedankt voor uw aanvraag. Wij nemen binnen één werkdag contact met u op met een op maat gemaakte offerte.</p>
+          </div>
+          <div class="form-error" role="alert">
+            <span data-nl="Er is iets misgegaan bij het verzenden. Probeer het opnieuw of e-mail naar" data-en="Something went wrong. Please try again or email">Er is iets misgegaan bij het verzenden. Probeer het opnieuw of e-mail naar</span>
+            <a href="mailto:info@corpshore.solutions">info@corpshore.solutions</a>.
+          </div>
+
+          <form data-validate action="/api/proposal" method="POST" novalidate enctype="multipart/form-data">
+            <div class="form-grid">
+
+              <!-- Contact details -->
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label for="naam" data-nl="Volledige naam" data-en="Full name">Volledige naam <span class="req">*</span></label>
+                  <input type="text" id="naam" name="naam" autocomplete="name" data-required
+                    placeholder="Jan Jansen">
+                  <span class="error-msg" data-nl="Naam is verplicht." data-en="Name is required.">Naam is verplicht.</span>
+                </div>
+                <div class="form-field">
+                  <label for="functietitel" data-nl="Functietitel" data-en="Job title">Functietitel <span class="req">*</span></label>
+                  <input type="text" id="functietitel" name="functietitel" data-required
+                    placeholder="Inkoopmanager">
+                  <span class="error-msg" data-nl="Functietitel is verplicht." data-en="Job title is required.">Functietitel is verplicht.</span>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="organisatie" data-nl="Organisatienaam" data-en="Organisation name">Organisatienaam <span class="req">*</span></label>
+                <input type="text" id="organisatie" name="organisatie" autocomplete="organization" data-required
+                  placeholder="Gemeente Amsterdam">
+                <span class="error-msg" data-nl="Organisatienaam is verplicht." data-en="Organisation name is required.">Organisatienaam is verplicht.</span>
+              </div>
+
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label for="email" data-nl="E-mailadres" data-en="Email address">E-mailadres <span class="req">*</span></label>
+                  <input type="email" id="email" name="email" autocomplete="email" data-required
+                    placeholder="jan.jansen@organisatie.nl">
+                  <span class="error-msg" data-nl="Geldig e-mailadres is verplicht." data-en="A valid email address is required.">Geldig e-mailadres is verplicht.</span>
+                </div>
+                <div class="form-field">
+                  <label for="telefoon" data-nl="Telefoonnummer" data-en="Phone number">Telefoonnummer</label>
+                  <input type="tel" id="telefoon" name="telefoon" autocomplete="tel"
+                    placeholder="+31 20 123 4567">
+                </div>
+              </div>
+
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label for="land" data-nl="Land" data-en="Country">Land <span class="req">*</span></label>
+                  <select id="land" name="land" data-required>
+                    <option value="" data-nl="Selecteer land" data-en="Select country">Selecteer land</option>
+                    <option data-nl="Nederland" data-en="Netherlands">Nederland</option>
+                    <option data-nl="België" data-en="Belgium">België</option>
+                    <option data-nl="Duitsland" data-en="Germany">Duitsland</option>
+                    <option data-nl="Suriname" data-en="Suriname">Suriname</option>
+                    <option data-nl="Anders (EU)" data-en="Other (EU)">Anders (EU)</option>
+                    <option data-nl="Anders (buiten EU)" data-en="Other (outside EU)">Anders (buiten EU)</option>
+                  </select>
+                  <span class="error-msg" data-nl="Land is verplicht." data-en="Country is required.">Land is verplicht.</span>
+                </div>
+                <div class="form-field">
+                  <label for="sector" data-nl="Sector / Branche" data-en="Sector / Industry">Sector / Branche</label>
+                  <select id="sector" name="sector">
+                    <option value="" data-nl="Selecteer sector" data-en="Select sector">Selecteer sector</option>
+                    <option data-nl="Financiële dienstverlening" data-en="Financial Services">Financiële dienstverlening</option>
+                    <option data-nl="Overheid &amp; Publieke sector" data-en="Government &amp; Public Sector">Overheid &amp; Publieke sector</option>
+                    <option data-nl="Gezondheidszorg" data-en="Healthcare">Gezondheidszorg</option>
+                    <option data-nl="Retail &amp; E-commerce" data-en="Retail &amp; E-commerce">Retail &amp; E-commerce</option>
+                    <option data-nl="Logistiek &amp; Transport" data-en="Logistics &amp; Transport">Logistiek &amp; Transport</option>
+                    <option data-nl="Technologie" data-en="Technology">Technologie</option>
+                    <option data-nl="Telecom" data-en="Telecom">Telecom</option>
+                    <option data-nl="Onderwijs" data-en="Education">Onderwijs</option>
+                    <option data-nl="Anders" data-en="Other">Anders</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Service requirements -->
+              <div style="border-top:1px solid var(--grey-border);padding-top:32px;margin-top:8px">
+                <p style="font-family:var(--font-serif);font-size:18px;color:var(--navy);margin-bottom:24px" data-nl="Projectdetails" data-en="Project details">Projectdetails</p>
+              </div>
+
+              <div class="form-field">
+                <label for="dienst" data-nl="Gewenste dienst(en)" data-en="Desired service(s)">Gewenste dienst(en) <span class="req">*</span></label>
+                <select id="dienst" name="dienst" data-required>
+                  <option value="" data-nl="Selecteer dienst" data-en="Select service">Selecteer dienst</option>
+                  <option data-nl="BPO / Klantcontact" data-en="BPO / Customer Service">BPO / Klantcontact</option>
+                  <option data-nl="IT-outsourcing / Softwareontwikkeling" data-en="IT Outsourcing / Software Development">IT-outsourcing / Softwareontwikkeling</option>
+                  <option data-nl="AI-outsourcing / Data-annotatie" data-en="AI Outsourcing / Data Annotation">AI-outsourcing / Data-annotatie</option>
+                  <option data-nl="Finance &amp; Accounting" data-en="Finance &amp; Accounting">Finance &amp; Accounting</option>
+                  <option data-nl="HR Outsourcing" data-en="HR Outsourcing">HR Outsourcing</option>
+                  <option data-nl="Backoffice &amp; Dataverwerking" data-en="Back Office &amp; Data Processing">Backoffice &amp; Dataverwerking</option>
+                  <option data-nl="Meertalige ondersteuning" data-en="Multilingual Support">Meertalige ondersteuning</option>
+                  <option data-nl="Meerdere diensten" data-en="Multiple services">Meerdere diensten</option>
+                  <option data-nl="Nog niet bepaald" data-en="Not yet decided">Nog niet bepaald</option>
+                </select>
+                <span class="error-msg" data-nl="Kies een dienst." data-en="Please select a service.">Kies een dienst.</span>
+              </div>
+
+              <div class="form-grid form-grid--2">
+                <div class="form-field">
+                  <label for="teamgrootte" data-nl="Benodigde teamgrootte" data-en="Required team size">Benodigde teamgrootte <span class="req">*</span></label>
+                  <select id="teamgrootte" name="teamgrootte" data-required>
+                    <option value="" data-nl="Selecteer grootte" data-en="Select size">Selecteer grootte</option>
+                    <option data-nl="1 – 5 seats" data-en="1 – 5 seats">1 – 5 seats</option>
+                    <option data-nl="6 – 20 seats" data-en="6 – 20 seats">6 – 20 seats</option>
+                    <option data-nl="21 – 50 seats" data-en="21 – 50 seats">21 – 50 seats</option>
+                    <option data-nl="51 – 100 seats" data-en="51 – 100 seats">51 – 100 seats</option>
+                    <option data-nl="100+ seats" data-en="100+ seats">100+ seats</option>
+                    <option data-nl="Nog te bepalen" data-en="To be determined">Nog te bepalen</option>
+                  </select>
+                  <span class="error-msg" data-nl="Kies een teamgrootte." data-en="Please select a team size.">Kies een teamgrootte.</span>
+                </div>
+                <div class="form-field">
+                  <label for="startmoment" data-nl="Gewenst startmoment" data-en="Desired start date">Gewenst startmoment <span class="req">*</span></label>
+                  <select id="startmoment" name="startmoment" data-required>
+                    <option value="" data-nl="Selecteer periode" data-en="Select period">Selecteer periode</option>
+                    <option data-nl="Binnen 4 weken" data-en="Within 4 weeks">Binnen 4 weken</option>
+                    <option data-nl="1 – 3 maanden" data-en="1 – 3 months">1 – 3 maanden</option>
+                    <option data-nl="3 – 6 maanden" data-en="3 – 6 months">3 – 6 maanden</option>
+                    <option data-nl="6 – 12 maanden" data-en="6 – 12 months">6 – 12 maanden</option>
+                    <option data-nl="Orienterend / nog geen datum" data-en="Exploratory / no date yet">Orienterend / nog geen datum</option>
+                  </select>
+                  <span class="error-msg" data-nl="Kies een startmoment." data-en="Please select a start date.">Kies een startmoment.</span>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="budget" data-nl="Indicatief maandbudget (EUR)" data-en="Indicative monthly budget (EUR)">Indicatief maandbudget (EUR)</label>
+                <select id="budget" name="budget">
+                  <option value="" data-nl="Selecteer budget (optioneel)" data-en="Select budget (optional)">Selecteer budget (optioneel)</option>
+                  <option data-nl="&lt; € 10.000 / maand" data-en="&lt; € 10,000 / month">&lt; € 10.000 / maand</option>
+                  <option data-nl="€ 10.000 – 30.000 / maand" data-en="€ 10,000 – 30,000 / month">€ 10.000 – 30.000 / maand</option>
+                  <option data-nl="€ 30.000 – 75.000 / maand" data-en="€ 30,000 – 75,000 / month">€ 30.000 – 75.000 / maand</option>
+                  <option data-nl="€ 75.000 – 200.000 / maand" data-en="€ 75,000 – 200,000 / month">€ 75.000 – 200.000 / maand</option>
+                  <option data-nl="&gt; € 200.000 / maand" data-en="&gt; € 200,000 / month">&gt; € 200.000 / maand</option>
+                  <option data-nl="Nog niet bepaald" data-en="Not yet decided">Nog niet bepaald</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="omschrijving" data-nl="Omschrijving van uw behoefte" data-en="Description of your requirement">Omschrijving van uw behoefte <span class="req">*</span></label>
+                <textarea id="omschrijving" name="omschrijving" rows="6" maxlength="3000" data-required
+                  placeholder="Beschrijf uw outsourcingbehoefte, het aantal talen dat u nodig heeft, de processen die u wilt uitbesteden en eventuele specifieke vereisten…"></textarea>
+                <span class="error-msg" data-nl="Omschrijving is verplicht." data-en="Description is required.">Omschrijving is verplicht.</span>
+                <span class="text-caption" style="margin-top:4px" data-nl="Maximaal 3.000 tekens." data-en="Maximum 3,000 characters.">Maximaal 3.000 tekens.</span>
+              </div>
+
+              <!-- File upload -->
+              <div class="form-field">
+                <label for="bijlagen" data-nl="Bijlagen (optioneel)" data-en="Attachments (optional)">Bijlagen (optioneel)</label>
+                <div class="file-upload-wrapper">
+                  <input type="file" id="bijlagen" name="bijlagen" multiple
+                    accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.png,.jpg,.jpeg"
+                    class="file-input" aria-describedby="bijlagen-hint">
+                  <label for="bijlagen" class="file-upload-label">
+                    <i class="ti ti-upload" aria-hidden="true"></i>
+                    <span data-nl="Bestanden kiezen of hierheen slepen" data-en="Choose files or drag here">Bestanden kiezen of hierheen slepen</span>
+                  </label>
+                  <div id="fileList" class="file-list"></div>
+                </div>
+                <p id="bijlagen-hint" class="text-caption" style="margin-top:6px" data-nl="PDF, Word, PowerPoint, Excel, CSV, PNG, JPG &middot; Max. 8 MB per bestand &middot; Max. 5 bestanden" data-en="PDF, Word, PowerPoint, Excel, CSV, PNG, JPG &middot; Max. 8 MB per file &middot; Max. 5 files">PDF, Word, PowerPoint, Excel, CSV, PNG, JPG &middot; Max. 8 MB per bestand &middot; Max. 5 bestanden</p>
+              </div>
+
+              <div class="form-field">
+                <label for="via" data-nl="Hoe heeft u ons gevonden?" data-en="How did you find us?">Hoe heeft u ons gevonden?</label>
+                <select id="via" name="via">
+                  <option value="" data-nl="Selecteer (optioneel)" data-en="Select (optional)">Selecteer (optioneel)</option>
+                  <option data-nl="Zoekmachine (Google, Bing)" data-en="Search engine (Google, Bing)">Zoekmachine (Google, Bing)</option>
+                  <option data-nl="LinkedIn" data-en="LinkedIn">LinkedIn</option>
+                  <option data-nl="Aanbeveling / mond-tot-mond" data-en="Recommendation / word of mouth">Aanbeveling / mond-tot-mond</option>
+                  <option data-nl="Outsource Accelerator ranking" data-en="Outsource Accelerator ranking">Outsource Accelerator ranking</option>
+                  <option data-nl="Evenement / beurs" data-en="Event / trade show">Evenement / beurs</option>
+                  <option data-nl="Anders" data-en="Other">Anders</option>
+                </select>
+              </div>
+
+              <!-- Consent -->
+              <div class="form-check">
+                <input type="checkbox" id="avg" name="avg_toestemming" value="ja" data-required>
+                <label for="avg">
+                  <span data-nl="Ik ga akkoord met de verwerking van mijn persoonsgegevens door Corpshore Solutions Corporation ten behoeve van de afhandeling van mijn offerteaanvraag, conform de" data-en="I agree to the processing of my personal data by Corpshore Solutions Corporation for the purpose of handling my proposal request, in accordance with the">Ik ga akkoord met de verwerking van mijn persoonsgegevens door Corpshore Solutions Corporation ten behoeve van de afhandeling van mijn offerteaanvraag, conform de</span>
+                  <a href="/privacybeleid/" data-nl="Privacyverklaring" data-en="Privacy Policy">Privacyverklaring</a>. <span class="req">*</span>
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input type="checkbox" id="newsletter" name="newsletter" value="ja">
+                <label for="newsletter" data-nl="Schrijf mij in voor de Corpshore Nieuwsbrief (max. 2&times; per maand, uitschrijven kan altijd)." data-en="Subscribe me to the Corpshore Newsletter (max. 2&times; per month, unsubscribe at any time).">Schrijf mij in voor de Corpshore Nieuwsbrief (max. 2&times; per maand, uitschrijven kan altijd).</label>
+              </div>
+
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAEFilZvgKq0--869" style="margin-bottom:8px"></div>
+
+              <button type="submit" class="btn btn--primary btn--lg" data-nl="Offerte aanvragen" data-en="Request a Proposal">Offerte aanvragen</button>
+
+            </div>
+          </form>
+        </div>
+
+        <!-- SIDE PANEL -->
+        <div style="position:sticky;top:100px">
+          <div style="background:var(--grey-light);border-radius:var(--radius-card);padding:32px;margin-bottom:24px">
+            <h3 style="font-family:var(--font-serif);color:var(--navy);margin-bottom:20px" data-nl="Wat kunt u verwachten?" data-en="What to expect?">Wat kunt u verwachten?</h3>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:14px">
+              <li style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--orange);font-size:20px;flex-shrink:0">1</span>
+                <p style="font-size:14px;color:#3a3a4a;margin:0" data-nl="U ontvangt binnen 1 werkdag een bevestiging en eventuele vervolgvragen." data-en="You receive a confirmation within 1 business day and any follow-up questions.">U ontvangt binnen 1 werkdag een bevestiging en eventuele vervolgvragen.</p>
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--orange);font-size:20px;flex-shrink:0">2</span>
+                <p style="font-size:14px;color:#3a3a4a;margin:0" data-nl="Wij stellen een op maat gemaakte offerte op, inclusief teamsamenstelling, SLA en prijsindicatie." data-en="We prepare a tailored proposal including team composition, SLA and price indication.">Wij stellen een op maat gemaakte offerte op, inclusief teamsamenstelling, SLA en prijsindicatie.</p>
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--orange);font-size:20px;flex-shrink:0">3</span>
+                <p style="font-size:14px;color:#3a3a4a;margin:0" data-nl="Optioneel: een ontdekkingsgesprek van 30 minuten om uw behoefte te verdiepen." data-en="Optional: a 30-minute discovery call to explore your requirements in depth.">Optioneel: een ontdekkingsgesprek van 30 minuten om uw behoefte te verdiepen.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div style="background:var(--navy);border-radius:var(--radius-card);padding:32px;color:#fff">
+            <p style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase" data-nl="Liever direct bellen?" data-en="Prefer to call directly?">Liever direct bellen?</p>
+            <button class="btn btn--primary btn--lg js-open-cal" style="width:100%;margin-bottom:16px" data-nl="Plan een gesprek &rarr;" data-en="Book a call &rarr;">Plan een gesprek &rarr;</button>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);text-align:center">
+              <span data-nl="Of stuur een e-mail naar" data-en="Or email us at">Of stuur een e-mail naar</span>
+              <a href="mailto:info@corpshore.solutions" style="color:rgba(255,255,255,.75)">info@corpshore.solutions</a>
+            </p>
+          </div>
+
+          <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="background:var(--grey-light);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-family:var(--font-serif);font-size:28px;color:var(--navy)">#2</div>
+              <div style="font-size:11px;color:var(--grey-mid);margin-top:2px" data-nl="BPO Europa" data-en="BPO Europe">BPO Europa</div>
+            </div>
+            <div style="background:var(--grey-light);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-family:var(--font-serif);font-size:28px;color:var(--navy)">1</div>
+              <div style="font-size:11px;color:var(--grey-mid);margin-top:2px" data-nl="werkdag reactie" data-en="business day reply">werkdag reactie</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* File upload preview */
+document.getElementById('bijlagen')?.addEventListener('change', function() {
+  const list = document.getElementById('fileList');
+  if (!list) return;
+  const files = Array.from(this.files || []);
+  if (!files.length) { list.innerHTML = ''; return; }
+  list.innerHTML = files.map(f => {
+    const sizeMB = (f.size / 1024 / 1024).toFixed(1);
+    const tooLarge = f.size > 8 * 1024 * 1024;
+    return `<div class="file-item${tooLarge ? ' file-item--error' : ''}">
+      <i class="ti ti-file" aria-hidden="true"></i>
+      <span>${f.name}</span>
+      <span style="color:var(--grey-mid);font-size:12px">${sizeMB} MB${tooLarge ? ' — te groot' : ''}</span>
+    </div>`;
+  }).join('');
+});
+</script>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1828,6 +1828,203 @@ h2 { letter-spacing: -.015em; }
   .scroll-top { bottom: 20px; right: 20px; }
 }
 
+/* ── 31. FOOTER 5-COLUMN + NEWSLETTER ──────────────────────── */
+.footer__grid--5 {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.4fr;
+}
+.footer__nl-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 10px;
+  line-height: 1.55;
+}
+.footer-nl-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+  background: rgba(255,255,255,.07);
+  color: var(--white);
+  margin-bottom: 8px;
+  transition: border-color var(--transition);
+  outline: none;
+}
+.footer-nl-input::placeholder { color: rgba(255,255,255,.3); }
+.footer-nl-input:focus { border-color: var(--orange); }
+
+@media (max-width: 1200px) {
+  .footer__grid--5 { grid-template-columns: 1fr 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .footer__grid--5 { grid-template-columns: 1fr; }
+}
+
+/* ── 32. CALENDLY PRE-FORM MODAL ────────────────────────────── */
+.cal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(8,20,60,.6);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.cal-overlay[style*="display: flex"] { animation: overlayIn .2s ease; }
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+
+.cal-modal {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(8,20,60,.25);
+  animation: modalIn .25s cubic-bezier(.22,1,.36,1);
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+.cal-modal__close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--grey-light);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--navy);
+  transition: background var(--transition);
+}
+.cal-modal__close:hover { background: var(--grey-border); }
+.cal-modal h2 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.cal-modal__subtitle {
+  font-size: 13px;
+  color: var(--grey-mid);
+  margin-bottom: 28px;
+  line-height: 1.55;
+}
+.cal-modal .form-field { margin-bottom: 16px; }
+.cal-modal .form-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 5px;
+  display: block;
+}
+.cal-modal .form-field input,
+.cal-modal .form-field select {
+  width: 100%;
+  padding: 10px 13px;
+  font-size: 14px;
+  border: 1.5px solid var(--grey-border);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--navy-dark);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  appearance: none;
+}
+.cal-modal .form-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238C8C88' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 32px;
+}
+.cal-modal .form-field input:focus,
+.cal-modal .form-field select:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(10,36,99,.1);
+}
+.cal-modal .form-field input.invalid { border-color: var(--red); }
+#calSubmitBtn {
+  width: 100%;
+  margin-top: 8px;
+  font-size: 15px;
+}
+.cal-modal__privacy {
+  font-size: 11px;
+  color: var(--grey-mid);
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+.cal-modal__privacy a { color: var(--navy); }
+
+@media (max-width: 480px) {
+  .cal-modal { padding: 28px 20px; }
+}
+
+/* ── 33. FILE UPLOAD ────────────────────────────────────────── */
+.file-upload-wrapper { position: relative; }
+
+.file-input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0; overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 18px;
+  border: 1.5px dashed var(--grey-border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--grey-mid);
+  background: var(--grey-light);
+  transition: border-color var(--transition), background var(--transition);
+}
+.file-upload-label i { font-size: 22px; color: var(--navy); flex-shrink: 0; }
+.file-upload-label:hover {
+  border-color: var(--navy);
+  background: #eaeaf2;
+}
+.file-input:focus + .file-upload-label {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.file-list { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--white);
+  border: 1px solid var(--grey-border);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--navy-dark);
+}
+.file-item i { color: var(--navy); flex-shrink: 0; }
+.file-item span:first-of-type { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-item--error { border-color: var(--red); }
+.file-item--error i { color: var(--red); }
+
+/* ── 34. MISC HELPERS ───────────────────────────────────────── */
+.text-caption {
+  font-size: 12px;
+  color: var(--grey-mid);
+  display: block;
+  line-height: 1.5;
+}
+.mt-lg { margin-top: 32px; }
+
 /* ══════════════════════════════════════════════════════════════
    INTERACTIVE TOOLS v1
    BPO Calculator · Readiness Quiz · Language Checker ·
