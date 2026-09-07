@@ -3,5 +3,11 @@
   "outputDirectory": ".",
   "framework": null,
   "trailingSlash": true,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  }
 }

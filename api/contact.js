@@ -1,6 +1,13 @@
 'use strict';
 
-/* Shared Zoho token helper — refresh token → access token */
+/* Vercel auto-parses application/json request bodies via its built-in middleware;
+   req.body is reliably populated for JSON POST requests on all Vercel serverless
+   functions using the Node.js runtime (framework: null).  No manual body-parser
+   is needed. */
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/* Shared Zoho token helper — refresh token -> access token */
 async function getZohoAccessToken() {
   const params = new URLSearchParams({
     client_id:     process.env.ZOHO_CLIENT_ID,
@@ -16,7 +23,11 @@ async function getZohoAccessToken() {
 
 /* Turnstile verification */
 async function verifyTurnstile(token) {
-  if (!process.env.TURNSTILE_SECRET_KEY) return true; // skip in dev
+  /* Dev bypass: when TURNSTILE_SECRET_KEY is absent (local dev / env not yet
+     configured) we skip verification and allow all traffic through.  This is
+     intentional — not a bug — so forms work without Cloudflare credentials in
+     development.  TURNSTILE_SECRET_KEY must always be set on production. */
+  if (!process.env.TURNSTILE_SECRET_KEY) return true;
   if (!token) return false;
   const res  = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
@@ -28,11 +39,33 @@ async function verifyTurnstile(token) {
 }
 
 module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', 'https://corpshore.nl');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
     const body = req.body || {};
 
+    /* ── Required field validation — return 400 before calling Zoho ── */
+    const voornaam    = (body.voornaam    || '').trim();
+    const achternaam  = (body.achternaam  || '').trim();
+    const email       = (body.email       || '').trim();
+    const functietitel = (body.functietitel || '').trim();
+    const organisatie  = (body.organisatie  || '').trim();
+    const land        = (body.land        || '').trim();
+    const bericht     = (body.bericht     || '').trim();
+
+    if (!voornaam)              return res.status(400).json({ error: 'Voornaam is verplicht.' });
+    if (!achternaam)            return res.status(400).json({ error: 'Achternaam is verplicht.' });
+    if (!email)                 return res.status(400).json({ error: 'E-mailadres is verplicht.' });
+    if (!EMAIL_RE.test(email))  return res.status(400).json({ error: 'Geldig e-mailadres is verplicht.' });
+    if (!functietitel)          return res.status(400).json({ error: 'Functietitel is verplicht.' });
+    if (!organisatie)           return res.status(400).json({ error: 'Organisatienaam is verplicht.' });
+    if (!land)                  return res.status(400).json({ error: 'Land is verplicht.' });
+    if (!bericht)               return res.status(400).json({ error: 'Bericht is verplicht.' });
+
+    /* ── Turnstile bot check ──────────────────────────────────────── */
     const ok = await verifyTurnstile(body['cf-turnstile-response']);
     if (!ok) return res.status(400).json({ error: 'Bot verification failed. Ververs de pagina en probeer opnieuw.' });
 
@@ -40,11 +73,8 @@ module.exports = async function handler(req, res) {
     if (process.env.ZOHO_CLIENT_ID && process.env.ZOHO_REFRESH_TOKEN) {
       const accessToken = await getZohoAccessToken();
 
-      const firstName = body.voornaam || '';
-      const lastName  = body.achternaam || firstName || 'Onbekend';
-
       /* Create CRM Lead */
-      await fetch('https://www.zohoapis.com/crm/v2/Leads', {
+      const leadRes = await fetch('https://www.zohoapis.com/crm/v2/Leads', {
         method:  'POST',
         headers: {
           Authorization:  `Zoho-oauthtoken ${accessToken}`,
@@ -52,31 +82,38 @@ module.exports = async function handler(req, res) {
         },
         body: JSON.stringify({
           data: [{
-            Salutation:  body.aanhef || '',
-            First_Name:  firstName,
-            Last_Name:   lastName,
-            Title:       body.functietitel || '',
-            Company:     body.organisatie  || '—',
+            Salutation:  body.aanhef          || '',
+            First_Name:  voornaam,
+            Last_Name:   achternaam,
+            Title:       functietitel,
+            Company:     organisatie,
             Industry:    body.organisatietype || '',
-            Email:       body.email,
-            Phone:       body.telefoonnummer || '',
+            Email:       email,
+            Phone:       body.telefoonnummer  || '',
             Lead_Source: 'Website corpshore.nl',
             Description: [
               `Gewenste dienst: ${body.gewenste_dienst || '—'}`,
-              `Land: ${body.land || '—'}`,
+              `Land: ${land}`,
               '',
-              body.bericht || '',
+              bericht,
             ].join('\n'),
           }],
         }),
-      }).catch(err => console.error('CRM error:', err));
+      });
 
-      /* Campaigns subscription if opted in */
+      const leadData = await leadRes.json();
+      /* Log Zoho CRM errors so ops can follow up */
+      if (!leadRes.ok || leadData?.data?.[0]?.status === 'error') {
+        console.error('contact.js: CRM Lead API error:', JSON.stringify(leadData));
+      }
+
+      /* Campaigns subscription if opted in.
+         Failure is swallowed — newsletter opt-in must never block a contact submission. */
       if (body.newsletter === 'ja' && process.env.ZOHO_CAMPAIGNS_LIST_KEY) {
         const contactInfo = JSON.stringify({
-          'Contact Email': body.email,
-          'First Name':    firstName,
-          'Last Name':     lastName,
+          'Contact Email': email,
+          'First Name':    voornaam,
+          'Last Name':     achternaam,
         });
         const cpParams = new URLSearchParams({
           resfmt:      'json',

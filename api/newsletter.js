@@ -1,5 +1,10 @@
 'use strict';
 
+/* Vercel auto-parses application/json request bodies via its built-in middleware;
+   req.body is reliably populated for JSON POST requests on all Vercel serverless
+   functions using the Node.js runtime (framework: null).  No manual body-parser
+   is needed. */
+
 async function getZohoAccessToken() {
   const params = new URLSearchParams({
     client_id:     process.env.ZOHO_CLIENT_ID,
@@ -14,6 +19,9 @@ async function getZohoAccessToken() {
 }
 
 module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', 'https://corpshore.nl');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
@@ -22,10 +30,16 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'Geldig e-mailadres is verplicht.' });
     }
 
+    /* When any of the three Zoho env vars is missing, we skip the Campaigns call
+       and return 200 silently.  Newsletter opt-in failure must never block the
+       user — the email was still captured on the client side (no server-side
+       storage here) and ops can manually subscribe them later if needed.
+       ZOHO_CLIENT_ID, ZOHO_REFRESH_TOKEN, and ZOHO_CAMPAIGNS_LIST_KEY must all
+       be set in the Vercel project environment for subscriptions to work. */
     if (process.env.ZOHO_CLIENT_ID && process.env.ZOHO_REFRESH_TOKEN && process.env.ZOHO_CAMPAIGNS_LIST_KEY) {
-      const accessToken   = await getZohoAccessToken();
-      const contactInfo   = JSON.stringify({ 'Contact Email': email });
-      const cpParams      = new URLSearchParams({
+      const accessToken = await getZohoAccessToken();
+      const contactInfo = JSON.stringify({ 'Contact Email': email });
+      const cpParams    = new URLSearchParams({
         resfmt:      'json',
         listkey:     process.env.ZOHO_CAMPAIGNS_LIST_KEY,
         contactinfo: contactInfo,

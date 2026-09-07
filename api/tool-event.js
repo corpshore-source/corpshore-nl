@@ -1,5 +1,10 @@
 'use strict';
 
+/* Vercel auto-parses application/json request bodies via its built-in middleware;
+   req.body is reliably populated for JSON POST requests on all Vercel serverless
+   functions using the Node.js runtime (framework: null).  No manual body-parser
+   is needed. */
+
 async function getZohoAccessToken() {
   const params = new URLSearchParams({
     client_id:     process.env.ZOHO_CLIENT_ID,
