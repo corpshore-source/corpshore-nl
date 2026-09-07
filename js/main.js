@@ -121,6 +121,7 @@ function buildFooter() {
           <li><a href="/diensten/#ai" data-nl="AI-outsourcing" data-en="AI Outsourcing">${isEN ? 'AI Outsourcing' : 'AI-outsourcing'}</a></li>
           <li><a href="/diensten/#finance" data-nl="Finance &amp; Accounting" data-en="Finance &amp; Accounting">Finance &amp; Accounting</a></li>
           <li><a href="/diensten/#hr" data-nl="HR Outsourcing" data-en="HR Outsourcing">HR Outsourcing</a></li>
+          <li><a href="/tarieven/" data-nl="Tarieven &amp; kosten" data-en="Pricing &amp; rates">${isEN ? 'Pricing &amp; rates' : 'Tarieven &amp; kosten'}</a></li>
         </ul>
       </div>
 
@@ -133,6 +134,8 @@ function buildFooter() {
           <li><a href="/blog/" data-nl="Blog &amp; Inzichten" data-en="Blog &amp; Insights">${isEN ? 'Blog &amp; Insights' : 'Blog &amp; Inzichten'}</a></li>
           <li><a href="/vacatures/" data-nl="Vacatures" data-en="Careers">${isEN ? 'Careers' : 'Vacatures'}</a></li>
           <li><a href="/frysk/">Frysk</a></li>
+          <li><a href="/vlaanderen/" data-nl="Vlaanderen &amp; Brussel" data-en="Flanders &amp; Brussels">${isEN ? 'Flanders &amp; Brussels' : 'Vlaanderen &amp; Brussel'}</a></li>
+          <li><a href="/de/" data-nl="Für deutschsprachige Kunden" data-en="For German-speaking clients">${isEN ? 'For German-speaking clients' : 'Für deutschsprachige Kunden'}</a></li>
         </ul>
       </div>
 

@@ -2457,3 +2457,49 @@ details[open] .faq-question::after { content: '−'; }
   font-family: var(--font-ui);
   max-width: 720px;
 }
+
+/* Bare summary/p shorthand — new language/tarief pages */
+.faq-item > summary {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  user-select: none;
+}
+.faq-item > summary::-webkit-details-marker { display: none; }
+.faq-item > summary::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--orange);
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+details[open].faq-item > summary::after { content: '−'; }
+.faq-item > p {
+  font-size: 15px;
+  color: #3a3a4a;
+  line-height: 1.7;
+  padding: 0 0 20px 0;
+  font-family: var(--font-ui);
+  max-width: 720px;
+}
+
+/* ── CHECKLIST ────────────────────────────────────────────────── */
+.checklist { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.checklist li { padding-left: 28px; position: relative; font-size: 15px; line-height: 1.6; }
+.checklist li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+
+/* ── STAT GRID (light bg variant) ────────────────────────────── */
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.stat-card__num { display: block; font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1; }
+
+/* ── PRICING TABLE HELPERS ────────────────────────────────────── */
+.price-card { background: var(--surface); border-radius: var(--radius-card); padding: 32px; }
