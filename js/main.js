@@ -139,8 +139,15 @@ function buildFooter() {
       <div class="footer__contact">
         <p class="footer__heading" data-nl="Contact" data-en="Contact">Contact</p>
         <a href="mailto:info@corpshore.solutions">info@corpshore.solutions</a>
+        <a href="mailto:recruitment@corpshore.solutions" style="margin-top:4px;display:block">recruitment@corpshore.solutions</a>
         <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,.4)">Corpshore Solutions Corporation<br>Toronto, Ontario, Canada</p>
-        <p style="margin-top:12px"><a href="https://corpshore.solutions/netherlands/" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.5)">corpshore.solutions/netherlands/ →</a></p>
+        <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,.45)" data-nl="Onderdeel van het Corpshore-ecosysteem:" data-en="Part of the Corpshore ecosystem:">${isEN ? 'Part of the Corpshore ecosystem:' : 'Onderdeel van het Corpshore-ecosysteem:'}</p>
+        <ul style="margin-top:6px;list-style:none;padding:0;display:flex;flex-direction:column;gap:4px">
+          <li><a href="https://corpshore.solutions" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.5)">corpshore.solutions →</a></li>
+          <li><a href="https://corpshore.ai" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.5)">corpshore.ai →</a></li>
+          <li><a href="https://corpshoretalent.com" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.5)">corpshoretalent.com →</a></li>
+          <li><a href="https://exams.corpshore.solutions" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.5)">exams.corpshore.solutions →</a></li>
+        </ul>
       </div>
 
       <div>
