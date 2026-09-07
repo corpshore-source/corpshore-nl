@@ -60,7 +60,7 @@ function buildNav() {
 <a class="skip-link" href="#main-content" data-nl="Ga naar inhoud" data-en="Skip to content">${isEN ? 'Skip to content' : 'Ga naar inhoud'}</a>
 <nav class="nav" role="navigation" aria-label="${isEN ? 'Main navigation' : 'Hoofdnavigatie'}">
   <div class="container nav__inner">
-    <a href="/" class="nav__brand" aria-label="${isEN ? 'Corpshore Netherlands — Homepage' : 'Corpshore Nederland — Startpagina'}">
+    <a href="/" class="nav__brand" aria-label="${isEN ? 'Corpshore Netherlands, homepage' : 'Corpshore Nederland, startpagina'}">
       <img src="/favicon.png" alt="" class="nav__logo-icon" aria-hidden="true">
       <div class="nav__logo-text">
         <span class="nav__logo-wordmark">Corpshore</span>
@@ -101,7 +101,7 @@ function buildFooter() {
     <div class="footer__grid footer__grid--5">
 
       <div class="footer__brand">
-        <a href="/" aria-label="${isEN ? 'Corpshore Netherlands — Home' : 'Corpshore Nederland — Home'}" class="footer__brand-link">
+        <a href="/" aria-label="${isEN ? 'Corpshore Netherlands' : 'Corpshore Nederland'}" class="footer__brand-link">
           <img src="/favicon.png" alt="" class="nav__logo-icon footer__logo-icon" aria-hidden="true">
           <div class="nav__logo-text">
             <span class="nav__logo-wordmark nav__logo-wordmark--white">Corpshore</span>

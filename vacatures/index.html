@@ -10,6 +10,7 @@
   <link rel="alternate" hreflang="nl" href="https://corpshore.nl/vacatures/">
   <link rel="alternate" hreflang="en" href="https://corpshore.nl/en/">
   <link rel="alternate" hreflang="fy" href="https://corpshore.nl/frysk/">
+  <link rel="alternate" hreflang="x-default" href="https://corpshore.nl/vacatures/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,6 +27,15 @@
     ]
   }
   </script>
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://corpshore.nl/vacatures/">
+  <meta property="og:site_name"   content="Corpshore Nederland">
+  <meta property="og:locale"      content="nl_NL">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:title"       content="Remote Vacatures Nederland &amp; Vlaanderen | Corpshore Careers">
+  <meta property="og:description" content="Remote vacatures in Nederland, Vlaanderen, Friesland, Suriname en de EU. Word onderdeel van Corpshore: #2 BPO in Europa. Solliciteer nu.">
+  <meta property="og:image"       content="https://corpshore.nl/images/thuiswerken-kandidaat-nl-aspirationeel.webp">
   <!-- Geo signals -->
   <meta name="geo.region" content="NL">
   <meta name="geo.placename" content="Nederland">
@@ -261,7 +271,7 @@ document.getElementById('cv')?.addEventListener('change', function() {
     return `<div class="file-item${tooLarge ? ' file-item--error' : ''}">
       <i class="ti ti-file-text" aria-hidden="true"></i>
       <span>${f.name}</span>
-      <span style="color:var(--grey-mid);font-size:12px">${sizeMB} MB${tooLarge ? ' — te groot' : ''}</span>
+      <span style="color:var(--grey-mid);font-size:12px">${sizeMB} MB${tooLarge ? ' (te groot)' : ''}</span>
     </div>`;
   }).join('');
 });
