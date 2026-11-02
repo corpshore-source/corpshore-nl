@@ -93,7 +93,7 @@ module.exports = async function handler(req, res) {
             Industry:    body.organisatietype || '',
             Email:       email,
             Phone:       body.telefoonnummer  || '',
-            Lead_Source: 'Website corpshore.nl',
+            Lead_Source: 'Corpshore Nederland (corpshore.nl)',
             Description: [
               `Gewenste dienst: ${body.gewenste_dienst || '—'}`,
               `Land: ${land}`,

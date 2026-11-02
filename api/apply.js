@@ -93,7 +93,7 @@ module.exports = async function handler(req, res) {
             LinkedIn_Profile:        body.linkedin          || '',
             Current_Job_Description: body.gewenste_functie  || '',
             Cover_Letter:            body.motivatiebrief    || '',
-            Source:                  'corpshore.nl/vacatures/',
+            Source:                  'Corpshore Nederland (corpshore.nl)',
           }],
         }),
       });
