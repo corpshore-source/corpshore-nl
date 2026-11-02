@@ -62,6 +62,9 @@ module.exports = async function handler(req, res) {
     if (!email)                return res.status(400).json({ error: 'E-mailadres is verplicht.' });
     if (!EMAIL_RE.test(email)) return res.status(400).json({ error: 'Geldig e-mailadres is verplicht.' });
 
+    /* Safety-net trace — ensures Vercel logs capture the applicant even if Zoho is down */
+    console.log('apply submission:', { email, naam, woonland: body.woonland || '' });
+
     /* ── Turnstile bot check ──────────────────────────────────────── */
     const ok = await verifyTurnstile(body['cf-turnstile-response']);
     if (!ok) return res.status(400).json({ error: 'Bot verification failed. Ververs de pagina en probeer opnieuw.' });

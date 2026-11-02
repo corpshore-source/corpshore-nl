@@ -65,6 +65,9 @@ module.exports = async function handler(req, res) {
     if (!land)                  return res.status(400).json({ error: 'Land is verplicht.' });
     if (!bericht)               return res.status(400).json({ error: 'Bericht is verplicht.' });
 
+    /* Safety-net trace — ensures Vercel logs capture the lead even if Zoho is down */
+    console.log('contact submission:', { email, voornaam, achternaam, organisatie, land });
+
     /* ── Turnstile bot check ──────────────────────────────────────── */
     const ok = await verifyTurnstile(body['cf-turnstile-response']);
     if (!ok) return res.status(400).json({ error: 'Bot verification failed. Ververs de pagina en probeer opnieuw.' });
